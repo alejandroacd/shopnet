@@ -1,0 +1,24 @@
+.conteiner {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 500px;
+    flex-direction: column;
+
+}
+.box p {
+    font-size:10em;
+}
+
+button {
+    padding:1.5em;
+    font-size: 1em;
+    font-weight: bold;
+}

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
+
+html {
+background-color: var(--primary);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+      font-family: 'Fredoka', sans-serif;
+}
+
+:root {
+    --primary: #f0f0f0;
+    --darker: 0.863;
+    --backgrounds: hsla(0, 0%, 11%, 0.972);
+    --thirdty: #C8C6C6;
+    --secondary: #2f5bacc0;
+    --error: hsl(354, 75%, 32%);
+    
+}
+
+input:focus {
+
+    outline: none;
+    border-bottom-color: var(--secondary);
+    transition: 0.5s;
+}
+
+button {
+    cursor:pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+    transition: 0.5s ease-out;
+}
+
+a {
+    color:var(--primary);
+    cursor:pointer;
+}
+
+button a {
+    cursor:pointer;
+}

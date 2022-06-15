@@ -1,0 +1,13 @@
+.dashboard-container {
+    margin-top:1em;
+    height: 100vh;
+    background-color: var(--primary);
+       
+}
+
+.dashboard-container h1 {
+    text-align: center;
+    letter-spacing: 1.5px;
+    color:var(--backgrounds)
+}
+

@@ -1,0 +1,121 @@
+.profile-container {
+    height: 100vh;
+    background-color: var(--backgrounds);
+    color:var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.profile_info form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+
+.profile-container .image_container {
+  width: 150px;
+  height: 150px;
+  background-color: var(--backgrounds);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.image_container form svg {
+  position:absolute;
+  left:40%;
+  top: 70%;
+  opacity: 0.2;
+}
+
+
+.image_container form::before {
+  color: var(--primary);
+  display: flex;
+  width: 50%;
+  margin:0 auto;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  content: 'Seleccionar imagen'; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size:1.2em;
+  opacity: 0.1;
+  text-align: center;
+}
+
+.image_container form:hover::before {
+  opacity: 0.5;
+  transition:0.2s ease-out;
+  background-color: var(--backgrounds);
+  width: 100%;
+  
+}
+
+.profile-container .image-submit {
+  padding:0.5em;
+
+  background-color: var(--backgrounds);
+
+}
+.image_container form input {
+  opacity: 0.9;
+  width: 100%;
+  height: 200px;
+
+  margin: 0 auto;
+ 
+}
+
+
+.profile-container .profile_info {
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:0.8em;
+}
+
+.profile-container .profile_info p {
+  color: var(--thirdty);
+  width: 200px;
+
+}
+.profile-container .profile_info h1 {
+  margin-bottom:0.5em;
+}
+
+.profile-container button {
+    margin: 0.5em;
+    padding: 0.8em;
+    background-color: var(--secondary);
+    border:none;
+    font-size: 1em;
+    font-weight: bold;
+    color:var(--primary);
+    width: 250px;
+    
+}
+
+
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
