@@ -1,23 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../Login/Login.css'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import axios from 'axios'
-import swal from 'sweetalert'
+
 
 
 const Login = () => {
 
+    let token = localStorage.getItem('token')
+    let id = localStorage.getItem('id')
     const [loading,setLoading] = useState(false)
     const [error,setError] = useState("");
     const emailRef = useRef();
     const passwordRef = useRef();
     var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-    useEffect(() => {
-        if(localStorage.getItem('token')){
-            window.location.href = `me/${localStorage.getItem('id')}`
-        }
-    },[])
 
 
     const loguear =  async (e) => {
@@ -54,7 +51,11 @@ const Login = () => {
     }
 
     return (
+
+        <>
         
+        {token && <Navigate replace to={`me/${id}`}/>}
+
         <div className='login-container'>
 
             {loading 
@@ -80,7 +81,9 @@ const Login = () => {
             }
         
         </div>
-       
+
+
+     </>  
     )
 }
 

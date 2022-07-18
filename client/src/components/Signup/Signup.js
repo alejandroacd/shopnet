@@ -1,11 +1,14 @@
 import React, {useState, useRef, useEffect} from 'react'
 import '../Signup/Signup.css'
-import { Link } from 'react-router-dom'
+import { Link,Navigate} from 'react-router-dom'
 import axios from 'axios';
 
 
 const Signup = () => {
 
+    
+    let token = localStorage.getItem('token')
+    let id = localStorage.getItem('id')
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState();
     const name = useRef();
@@ -63,6 +66,9 @@ const Signup = () => {
         }
     }
     return (
+
+        <>
+
         
         <div className='signup-container'>
             {loading 
@@ -94,9 +100,7 @@ const Signup = () => {
                } 
         </div>
             
-         
-            
-       
+        </>
     )
 }
 
