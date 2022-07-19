@@ -74,7 +74,6 @@ const Signup = () => {
             {loading 
             
             ? 
-            
             <p> Cargando Información </p>
             
             :
