@@ -125,14 +125,14 @@
   @media (min-width:920px){ 
     
     .profile-container .image_container {
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
     }
 
 
     .profile-container button {
-      padding:1.2em;
+      padding:1em;
       width: 320px;
-      font-size:1.1em;
+      font-size:1em;
     }
   }
