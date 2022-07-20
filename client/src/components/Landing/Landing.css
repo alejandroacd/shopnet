@@ -78,8 +78,8 @@ img {
 
 @media (min-width: 1200px) {
     .buttons .landing_button {
-        padding:1.5em;
-        width: 40%;
+        padding:1.2em;
+        width: 32%;
     }
 
 }
