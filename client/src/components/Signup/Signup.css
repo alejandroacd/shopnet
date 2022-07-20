@@ -10,8 +10,6 @@
    
 }
 
-
-
 .signup-container form {
    
     display: flex;
@@ -21,7 +19,7 @@
     justify-content:space-around;
     padding:1em;
     position: relative;
-    top:10%;
+    top:14%;
  
 }
 
