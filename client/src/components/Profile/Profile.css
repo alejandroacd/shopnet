@@ -6,13 +6,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
 
 }
 .profile_info form {
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  
 }
 
 
@@ -27,6 +30,7 @@
   position: relative;
   overflow: hidden;
   background-size: cover;
+
 }
 
 .image_container form svg {
@@ -66,7 +70,6 @@
 
 .profile-container .image-submit {
   padding:0.5em;
-
   background-color: var(--backgrounds);
 
 }
@@ -74,9 +77,9 @@
   opacity: 0.9;
   width: 100%;
   height: 200px;
-
   margin: 0 auto;
- 
+  opacity: 0;
+
 }
 
 
@@ -91,7 +94,6 @@
 .profile-container .profile_info p {
   color: var(--thirdty);
   width: 200px;
-
 }
 .profile-container .profile_info h1 {
   margin-bottom:0.5em;
@@ -119,3 +121,18 @@
     }
   }
   
+
+  @media (min-width:920px){ 
+    
+    .profile-container .image_container {
+      width: 250px;
+      height: 250px;
+    }
+
+
+    .profile-container button {
+      padding:1.2em;
+      width: 320px;
+      font-size:1.1em;
+    }
+  }

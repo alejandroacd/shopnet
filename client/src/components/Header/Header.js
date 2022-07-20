@@ -46,7 +46,7 @@ const Header = () => {
         </header>
 
         <ul className={toggle ? 'nav-list-burger d-flex' : '.nav-list-burger d-none'}>
-                <Link to="login" onClick={switchToggle}> <li> Iniciar Sesión </li> </Link>
+                <Link to={isLoggedIn ? `/me/${identifier}` : "login"} onClick={switchToggle}> <li> {isLoggedIn ? 'Ver mi perfil' : "Iniciar Sesión"}  </li> </Link>
                 <Link to="signup" onClick={switchToggle}> <li> Vender </li> </Link>
                 <Link to="signup" onClick={switchToggle}> <li> Ver categorías </li> </Link>
                 <Link to="signup" onClick={switchToggle}> <li> FAQ </li> </Link>
