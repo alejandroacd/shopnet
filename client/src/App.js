@@ -21,7 +21,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/signup" element={<Signup />} />
-              <Route exact path='/login' element={<Login />} />
+              <Route exact path='https://theshopnet.netlify.app/login' element={<Login />} />
               <Route exact path='/me/:id' element={<Profile />} />
               <Route exact path='/probe' element={<Prueba />} />
               <Route exact path='/successfullBinding' element={<SuccessfullBinding />} />
