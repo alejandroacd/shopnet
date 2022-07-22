@@ -4,12 +4,9 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
 import swal from 'sweetalert'
-import mpAccessTokenRequest from '../../contexts/mpContext'
-
 
 const Profile = () => {
-
-    const [loading, setLoading] = useState(false);
+    const [loading,setLoading] = useState(false)
     const backgroundRef = useRef();
     const formRef = useRef();
     const [userLogged, setUserLogged] = useState([]);
@@ -22,6 +19,14 @@ const Profile = () => {
         return swal({
             title: 'Tu foto ha sido actualizada con éxito :)',
             icon: 'success',
+            timer: '3000'
+        })
+    }
+
+    const deleteMpAlert = () => {
+        return swal({
+            title: 'Desasociaste tu cuenta de Mercado Pago',
+            icon: 'info',
             timer: '3000'
         })
     }
@@ -58,9 +63,22 @@ const Profile = () => {
                 console.log(e)
             })
     }
+
+
+
+    const deletingAccessToken = () => {
+        deleteMpAlert()
+        setMpStatus(false)
+        axios.post('http://localhost:3001/api/users/deleteAccessToken', {
+            id: userLogged._id
+        })
+        .then(() => {
+            console.log('borrado')
+            })
+        .catch((e) => console.log(e))
+    }
+
     // Seteo de token.
-
-
     useEffect(() => {
         
         setLoading(true)
@@ -72,6 +90,9 @@ const Profile = () => {
             .then((res) => {
                 setUserLogged(res.data)
                 setLoading(false)
+                if(res.data.mercadopagoAccessToken !== null){
+                    setMpStatus(true)
+                }
             })
             .then(
                 userLogged.userImage ? backgroundRef.current.style.backgroundImage = `url(${userLogged.userImage})` : null
@@ -82,7 +103,7 @@ const Profile = () => {
                 console.log(err)
             })
 
-    }, [userLogged.userImage])
+    }, [userLogged.userImage,mpStatus])
 
     return (
         <>
@@ -113,8 +134,8 @@ const Profile = () => {
 
                 {
                     mpStatus
-                        ? null
-                        : <button><a href={mercadoPagoAuthLink}> Activar MercadoPago </a> </button>     
+                        ? <button onClick={deletingAccessToken}> Desasociar MercadoPago  </button> 
+                        : <button><a href={mercadoPagoAuthLink}> Asociar MercadoPago </a> </button>     
                 }
 
             </div>

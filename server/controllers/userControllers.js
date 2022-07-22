@@ -4,7 +4,6 @@ const User = require('../models/userModel')
 const fs = require('fs-extra')
 const uploadUserImage = require('../cloudinary/config')
 
-
 //Error Exceptions 
 
 function UserExeception() {
@@ -143,7 +142,8 @@ const updateSomething = async (req,res) => {
     catch(e){
         console.log(e)
     }
- 
+
+
     /*
     try {
         const updated = await User.findByIdAndUpdate(id, {
@@ -168,6 +168,23 @@ const updateSomething = async (req,res) => {
     */
 }
 
+
+const deleteAccessToken = async (req,res) => {
+    const { id } = req.body;
+    try {
+        const updated = await User.findByIdAndUpdate(id, {
+            mercadopagoAccessToken: null,
+            mercadopagoRefreshToken: null
+        })
+        console.log(updated)
+    }
+    catch(e){
+        res.status(400)
+        throw new Error('Error deleting your MercadoPago association')
+    }
+
+}
+
 // Función que genera token (JWT)
 
 const generateToken = (id) => {
@@ -180,5 +197,6 @@ module.exports = {
     loginUser,
     getMyUser,
     uploadImage,
-    updateSomething
+    updateSomething,
+    deleteAccessToken
 } 

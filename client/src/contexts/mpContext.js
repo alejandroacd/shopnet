@@ -1,7 +1,5 @@
 import axios from 'axios'
-import React, { useState, useContext, createContext } from 'react'
-
-
+import React, {useContext, createContext } from 'react'
 
 const MercadoPagoContext = createContext();
 
@@ -10,8 +8,6 @@ export const useMpContext = () => {
 }
 
 export const MpProvider = ({ children }) => {
-
-    const [accessTokenInfo, setAccessTokenInfo] = useState()
 
     // función que hace el request del access token de un usuario en MercadoPago 
 
@@ -33,8 +29,11 @@ export const MpProvider = ({ children }) => {
                 console.log(e)
             })
     }
+
+
+
     const value = {
-        accessTokenInfo,
+
         mpAccessTokenRequest
     }
 

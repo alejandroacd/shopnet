@@ -30,7 +30,7 @@ const Signup = () => {
         e.preventDefault();
         var isValid = expReg.test(email.current.value)
 
-        // errores
+        // errors
 
         if(password.current.value !== password2.current.value) {
             setLoading(false)
