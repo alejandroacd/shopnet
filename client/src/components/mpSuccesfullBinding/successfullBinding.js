@@ -4,7 +4,8 @@ import { useMpContext } from '../../contexts/mpContext';
 
 const SuccessfullBinding = () => {
 
-    const { accessTokenInfo, mpAccessTokenRequest } = useMpContext()
+    const id = localStorage.getItem('id')
+    const { mpAccessTokenRequest } = useMpContext()
     
     useEffect(() => {
         const query = window.location.search
@@ -12,13 +13,28 @@ const SuccessfullBinding = () => {
         const finalCode = queryDecoded.get('code')
 
          mpAccessTokenRequest(finalCode)
+         .then(() => {
+            setTimeout(() => {
+                window.location = `/me/${id}`
+            },2000)
+         })
     },[mpAccessTokenRequest])
     
     return (
-        <div className='box'>
+     <div className='box'>
+        <p>Sincronizando con MercadoPago :)</p>
+      <div class="load-3">
+         
+         
+         <div class="line"></div>
+         <div class="line"></div>
+         <div class="line"></div>    
+
+       </div>
+
 
         </div>
     )
 }
 
-export default SuccessfullBinding
+export default SuccessfullBinding;

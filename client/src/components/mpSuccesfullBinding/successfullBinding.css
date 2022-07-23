@@ -1,5 +1,57 @@
 .box {
     height: 100vh;
     width: 100%;
-    background-color: var(--backgrounds)
+    background-color: var(--backgrounds);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:1em;  
+    flex-direction: column;
 }
+
+
+.box p {
+    display: flex;
+    text-align:center;
+    font-size:1.5em;
+    color: var(--primary);
+}
+.line {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: var(--secondary);
+    margin:0.5em;
+  }
+
+  .load-3{
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding:1em;
+  }
+
+
+  .load-3 .line:nth-last-child(1) {
+    animation: loadingC 0.6s 0.1s linear infinite;
+  }
+  .load-3 .line:nth-last-child(2) {
+    animation: loadingC 0.6s 0.2s linear infinite;
+  }
+  .load-3 .line:nth-last-child(3) {
+    animation: loadingC 0.6s 0.3s linear infinite;
+  }
+
+  @keyframes loadingC {
+    0%{
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(0, 15px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  

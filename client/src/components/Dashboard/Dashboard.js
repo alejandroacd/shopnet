@@ -17,7 +17,7 @@ useEffect(() => {
 },[])
     return (
         <div className='dashboard-container'>
-            <h1> Latest posts</h1>
+            <h1> Latest posts <span>_</span></h1>
         
         <div className='product-container'>
             {datita.map((x,y) => {
