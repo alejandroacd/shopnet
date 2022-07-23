@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react'
 import '../Signup/Signup.css'
-import { Link,Navigate} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -68,6 +68,8 @@ const Signup = () => {
     return (
 
         <>
+
+        
 
         
         <div className='signup-container'>

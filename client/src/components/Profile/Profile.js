@@ -4,8 +4,10 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
 import swal from 'sweetalert'
+import { Navigate } from 'react-router-dom'
 
 const Profile = () => {
+    let token = localStorage.getItem('token');
     const [loading,setLoading] = useState(false)
     const backgroundRef = useRef();
     const formRef = useRef();
@@ -108,6 +110,7 @@ const Profile = () => {
     return (
         <>
 
+        {!token && <Navigate replace to='/'/>}
             <div className='profile-container'>
                 <div className='profile_info'>
                     <div ref={backgroundRef} className='image_container'>
