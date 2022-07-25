@@ -9,10 +9,15 @@ const Settings = () => {
     
     return (
         <>
-
         {!token && <Navigate replace to='/' />}
 
-
+        <div className='settings_div'>
+            <h1>Edita tu perfil</h1>
+            <form>
+                <label for="neighborhood"> Barrio </label> <br />
+                <input name="neighborhood" type='text' />
+            </form>
+        </div>
         </>
     )
 }

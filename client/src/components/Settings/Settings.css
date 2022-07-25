@@ -1,0 +1,29 @@
+.settings_div {
+    display: flex;
+    width: 90%;
+    height: 87vh;
+    border:1px solid red;
+    margin: 0 auto;
+    position: relative;
+    top:12vh;
+    flex-direction: column;
+    color: var(--primary)
+}
+
+.settings_div h1 {
+    text-align: center;
+    margin:1.5em;
+}
+
+.settings_div form {
+    position: relative;
+    top:3em;
+    display: flex;
+    justify-content: center;
+}
+
+.settings_div form input {
+    background-color: var(--backgrounds);
+    border:none;
+    
+}
