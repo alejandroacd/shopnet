@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { registerUser, loginUser, getMyUser, uploadImage, updateSomething, deleteAccessToken } = require('../controllers/userControllers')
+const { registerUser, loginUser, getMyUser, uploadImage, updateTokens, deleteAccessToken } = require('../controllers/userControllers')
 const protect = require('../middlewares/authMiddleware')
 
 router.post('/', registerUser)
@@ -11,9 +11,11 @@ router.get('/me', protect, getMyUser)
 
 router.post('/me/:id', uploadImage)
 
-router.post('/postAccessToken', updateSomething)
+router.post('/postAccessToken', updateTokens)
 
 router.post('/deleteAccessToken', deleteAccessToken)
+
+router.post('/updateProfile', updateProfile)
 
 
  

@@ -127,7 +127,7 @@ const getMyUser = async (req, res) => {
     }
 }
 
-const updateSomething = async (req,res) => {
+const updateTokens = async (req,res) => {
     const {access_token, refresh_token, id} = req.body;
 
     console.log(access_token,refresh_token)
@@ -144,29 +144,24 @@ const updateSomething = async (req,res) => {
     }
 
 
-    /*
-    try {
-        const updated = await User.findByIdAndUpdate(id, {
-            mercadopagoAccessToken: access_token,
-            mercadopagoRefreshToken: refresh_token
-        },
-        {
-            new: true
-        })
-
-        res.json({
-        ...updated
-        })
-        console.log(updated)
-    }
-    catch(e){
-        res.status(400).json({
-            message: 'Problema en el servidor'
-        })
+    const updateProfile = async (req,res) => {
+        const { neighborhood, phoneNumber,id} = req.body;
+    
+        console.log(neighborhood,phoneNumber)
+    
+        try {
+            const updated = await User.findByIdAndUpdate(id, {
+                neighborhood,
+                phoneNumber
+            })
+            console.log(updated)
+        }
+        catch(e) {
+            res.status(400)
+            throw new Error('Error updating profile')
+        }
     }
 
-    */
-}
 
 
 const deleteAccessToken = async (req,res) => {
@@ -197,6 +192,7 @@ module.exports = {
     loginUser,
     getMyUser,
     uploadImage,
-    updateSomething,
-    deleteAccessToken
-} 
+    updateTokens,
+    updateProfile,
+    deleteAccessToken,
+} } 

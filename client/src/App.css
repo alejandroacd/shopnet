@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
 html {
 background-color: var(--backgrounds);
@@ -8,7 +8,7 @@ background-color: var(--backgrounds);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-      font-family: 'Fredoka', sans-serif;
+      font-family: 'Lato', sans-serif;
 }
 
 :root {

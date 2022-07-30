@@ -1,13 +1,13 @@
 .settings_div {
     display: flex;
     width: 90%;
-    height: 87vh;
-    border:1px solid red;
+    height: 85vh;
     margin: 0 auto;
-    position: relative;
-    top:12vh;
     flex-direction: column;
-    color: var(--primary)
+    color: var(--primary);
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .settings_div h1 {
@@ -16,14 +16,38 @@
 }
 
 .settings_div form {
-    position: relative;
-    top:3em;
+
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;   
+
+}
+.settings_div form label {
+    font-weight: bold;
+}
+.settings_div form select {
+    background-color: var(--thirdty);
+    border-radius: 30px;
+    padding:0.5em;
+    margin:1em;
 }
 
 .settings_div form input {
-    background-color: var(--backgrounds);
+    background-color: var(--thirdty);
     border:none;
-    
+    margin:1em;
+    color:var(--primary);
+    border-radius: 30px;
+    padding:0.5em;
+    color:var(--secondary);
+    font-weight: bold;
+}
+
+.settings_div form button {
+    padding:0.8em;
+    background-color: var(--secondary);
+    color:var(--primary);
+    font-weight: bold;
+    border:none
 }
