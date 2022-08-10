@@ -4,13 +4,6 @@ const User = require('../models/userModel')
 const fs = require('fs-extra')
 const uploadUserImage = require('../cloudinary/config')
 
-//Error Exceptions 
-
-function UserExeception() {
-    this.status = 400
-    this.message = 'Error con el usuario y / o contraseña'
-}
-
 
 // register 
 const registerUser = async (req, res) => {
@@ -90,7 +83,7 @@ const loginUser = async (req, res) => {
             message:'User and password does not match'
         })
 
-        throw new Error('User and password noes not match')
+   
     }    
 }
 
@@ -141,26 +134,24 @@ const updateTokens = async (req,res) => {
     }
     catch(e){
         console.log(e)
+    } }
+
+const updateProfile = async (req,res) => {
+    const { identificador, neighborhood, phoneNumber } = req.body;
+    console.log(req.body)
+
+    try {
+       const updated = await User.findByIdAndUpdate(identificador, {
+        neighborhood,
+        phoneNumber
+       })
     }
 
-
-    const updateProfile = async (req,res) => {
-        const { neighborhood, phoneNumber,id} = req.body;
-    
-        console.log(neighborhood,phoneNumber)
-    
-        try {
-            const updated = await User.findByIdAndUpdate(id, {
-                neighborhood,
-                phoneNumber
-            })
-            console.log(updated)
-        }
-        catch(e) {
-            res.status(400)
-            throw new Error('Error updating profile')
-        }
+    catch(e){
+        res.status(400)
+        throw new Error('Error upadting your profile')
     }
+}
 
 
 
@@ -177,16 +168,17 @@ const deleteAccessToken = async (req,res) => {
         res.status(400)
         throw new Error('Error deleting your MercadoPago association')
     }
-
 }
 
 // Función que genera token (JWT)
 
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {   
         expiresIn: '30d'
     })
 }
+
+
 module.exports = {
     registerUser,
     loginUser,
@@ -195,4 +187,5 @@ module.exports = {
     updateTokens,
     updateProfile,
     deleteAccessToken,
-} } 
+    generateToken
+} 

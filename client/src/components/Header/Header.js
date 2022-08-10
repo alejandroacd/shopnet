@@ -10,10 +10,7 @@ const Header = () => {
     const [toggle,setToggle] = useState(false);
     const [isLoggedIn,setLoggedIn] = useState(false);
     const identifier = localStorage.getItem('id') || null;
-
     
-
-
     useEffect(() => {
         if(localStorage.getItem('token')){
             setLoggedIn(!isLoggedIn)

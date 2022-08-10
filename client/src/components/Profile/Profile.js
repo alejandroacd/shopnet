@@ -4,9 +4,10 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
 import swal from 'sweetalert'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 
 const Profile = () => {
+    let id = localStorage.getItem('id')
     let token = localStorage.getItem('token');
     const [loading,setLoading] = useState(false)
     const backgroundRef = useRef();
@@ -123,7 +124,7 @@ const Profile = () => {
 
                     <h1> {userLogged.name} {userLogged.lastName} </h1>
                     <p> Barrio: </p>
-                    <p>Número telefónico:</p>
+                    <p>Número telefónico: </p>
                 </div>
 
                 {
@@ -131,7 +132,9 @@ const Profile = () => {
                         ?
                         <>
                             <button onClick={logout}> Cerrar Sesión </button>
-                            <button> Editar Perfil </button> </>
+                            <Link to={`/me/${id}/settings`}> <button> Editar Perfil </button> </Link>
+                            
+                         </>
                         : null
                 }
 

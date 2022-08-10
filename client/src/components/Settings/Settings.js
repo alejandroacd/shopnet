@@ -1,17 +1,42 @@
-import React, {useState, useRef} from 'react';
+import React, { useRef } from 'react';
 import '../Settings/Settings.css'
 import { Navigate } from 'react-router-dom'
 import axios from 'axios';
+import swal from 'sweetalert'
+
 
 const Settings = () => {
-    let token = localStorage.getItem('token');
-    let currentValue = useRef()
-    
 
-    const sendSettings = () => {
-        axios.post('https://localhost:3001/me/')
+
+    let token = localStorage.getItem('token')
+    const neighborhood = useRef()
+    const phoneNumber = useRef()
+
+    const succesfullAlert = () => {
+        return swal({
+            title: 'Tu perfil ha sido actualizado con éxito!',
+            icon: 'success',
+            timer: '3000'
+        })
     }
 
+    const sendSettings = () => {
+
+        axios.post('http://localhost:3001/api/users/updateProfile', {
+            identificador: localStorage.getItem('id'),
+            neighborhood: neighborhood.current.value,
+            phoneNumber:phoneNumber.current.value
+         
+        })
+            .then(() => {
+                succesfullAlert()
+                localStorage.setItem('neighborhood', neighborhood.current.value)
+                localStorage.setItem('phoneNumber', phoneNumber.current.value)
+                
+            }
+            )
+            .catch(e => console.log(e))
+    }
 
     return (
         <>
@@ -21,9 +46,9 @@ const Settings = () => {
                 <h1>Edita tu perfil</h1>
                 <form method="POST" action="http://localhost:3001/api/users/updateProfile">
 
-                    <label forHtml="neighborhood ">¿En qué barrio te encontrás? </label>
+                    <label htmlFor="neighborhood ">¿En qué barrio te encontrás? </label>
 
-                    <select ref={currentValue} onChange={sendSettings} name="neighborhood" id="neighborhood">
+                    <select ref={neighborhood} name="neighborhood" id="neighborhood">
                         <option value="Almagro">Almagro</option>
                         <option value="Agronomía">Agronomía</option>
                         <option value="Balvanera"> Balvanera </option>
@@ -72,10 +97,10 @@ const Settings = () => {
                         <option value="Villa del Parque"> Villa del Parque </option>
                         <option value="Vélez Sarsfield"> Vélez Sarsfield  </option>
                     </select>
-                    <label for="neighborhood"> Número telefónico: </label>
-                    <input name="neighborhood" type='text' autoFocus />
+                    <label htmlFor="neighborhood"> Número telefónico: </label>
+                    <input name="phoneNumber" type='text' id='phoneNumber'  autoFocus ref={phoneNumber} />
 
-                    <button> Actualizar mi perfil </button>
+                    <button onClick={sendSettings}> Actualizar mi perfil </button>
                 </form>
             </div>
         </>
