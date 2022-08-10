@@ -83,14 +83,14 @@ const Profile = () => {
 
     // Seteo de token.
     useEffect(() => {
-        
         setLoading(true)
         axios.get('http://localhost:3001/api/users/me', {
             headers: {
-                "x-access-token": localStorage.getItem('token')
+                "x-access-token": token
             }
         })
             .then((res) => {
+                console.log(res.data)
                 setUserLogged(res.data)
                 setLoading(false)
                 if(res.data.mercadopagoAccessToken !== null){
@@ -123,8 +123,8 @@ const Profile = () => {
                     <button className='image-submit' type='submit' onClick={enviarImagen}> Guardar foto </button>
 
                     <h1> {userLogged.name} {userLogged.lastName} </h1>
-                    <p> Barrio: </p>
-                    <p>Número telefónico: </p>
+                    <p> {`Barrio: ${userLogged.neighborhood}`} </p>
+                    <p> {`Número telefónico: ${userLogged.phoneNumber}`} </p>
                 </div>
 
                 {

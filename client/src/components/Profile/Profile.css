@@ -93,7 +93,8 @@
 
 .profile-container .profile_info p {
   color: var(--thirdty);
-  width: 200px;
+  width: 250px;
+
 }
 .profile-container .profile_info h1 {
   margin-bottom:0.5em;

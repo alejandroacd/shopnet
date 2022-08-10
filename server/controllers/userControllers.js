@@ -38,8 +38,8 @@ const registerUser = async (req, res) => {
         email,
         password: hashedPassword,
         userImage: false,
-        phoneNumber: null,
-        neighborhood: null,
+        phoneNumber: '',
+        neighborhood: '',
         mercadopagoAccessToken: null,
         mercadopagoRefreshToken: null
     })
@@ -76,6 +76,8 @@ const loginUser = async (req, res) => {
             lastName: user.lastName,
             email: user.email,
             token: generateToken(user._id),
+            phoneNumber: user.phoneNumber,
+            neighborhood: user.neighborhood,
             isLoggedIn: true,
         })
     } else {
@@ -124,6 +126,9 @@ const updateTokens = async (req,res) => {
     const {access_token, refresh_token, id} = req.body;
 
     console.log(access_token,refresh_token)
+    res.json({
+        message:'everythign well'
+    })
 
     try {
         const updated = await User.findByIdAndUpdate(id, {
@@ -135,15 +140,15 @@ const updateTokens = async (req,res) => {
     catch(e){
         console.log(e)
     } }
+    
 
 const updateProfile = async (req,res) => {
     const { identificador, neighborhood, phoneNumber } = req.body;
-    console.log(req.body)
 
     try {
        const updated = await User.findByIdAndUpdate(identificador, {
         neighborhood,
-        phoneNumber
+        phoneNumber: `+54${phoneNumber}`
        })
     }
 

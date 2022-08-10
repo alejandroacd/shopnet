@@ -33,6 +33,7 @@ const Login = () => {
                 password: passwordRef.current.value
             })
             .then(res => {
+                console.log(res.data)
                 setLoading(true)
                 const {token, _id } = res.data
                 if(token,_id) {

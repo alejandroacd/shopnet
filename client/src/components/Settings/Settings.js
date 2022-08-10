@@ -1,41 +1,59 @@
-import React, { useRef } from 'react';
+import React, { useRef,useState } from 'react';
 import '../Settings/Settings.css'
 import { Navigate } from 'react-router-dom'
 import axios from 'axios';
 import swal from 'sweetalert'
 
 
+
 const Settings = () => {
 
-
+    let id = localStorage.getItem('id')
     let token = localStorage.getItem('token')
+    let phoneNumberSaved = localStorage.getItem('phoneNumber')
+    let neighborhoodSaved = localStorage.getItem('neighborhood')
     const neighborhood = useRef()
     const phoneNumber = useRef()
+    const phoneRegEx = /^([0-9]){10}$/
 
-    const succesfullAlert = () => {
+    const [error,setError] = useState('')
+
+    const succesfullAlert = (message) => {
         return swal({
-            title: 'Tu perfil ha sido actualizado con éxito!',
+            title: message,
             icon: 'success',
             timer: '3000'
         })
     }
 
-    const sendSettings = () => {
 
-        axios.post('http://localhost:3001/api/users/updateProfile', {
-            identificador: localStorage.getItem('id'),
-            neighborhood: neighborhood.current.value,
-            phoneNumber:phoneNumber.current.value
-         
-        })
-            .then(() => {
-                succesfullAlert()
-                localStorage.setItem('neighborhood', neighborhood.current.value)
-                localStorage.setItem('phoneNumber', phoneNumber.current.value)
-                
-            }
-            )
-            .catch(e => console.log(e))
+    const sendSettings = async (e) => {
+        e.preventDefault()
+        const isValid = phoneRegEx.test(phoneNumber.current.value);
+        console.log('eso')
+
+        if(!isValid){
+            setError('Debes introducir un número valido, de 10 dígitos. Incluyendo el código regional. Ejemplo: 1159873698')
+        }
+        else {
+            axios.post('http://localhost:3001/api/users/updateProfile', {
+                identificador: localStorage.getItem('id'),
+                neighborhood: neighborhood.current.value,
+                phoneNumber: phoneNumber.current.value
+    
+            })
+                .then(
+                    succesfullAlert('Perfil actualizado correctamente!'),
+                    localStorage.setItem('phoneNumber',phoneNumber.current.value),
+                    localStorage.setItem('neighborhood', neighborhood.current.value)
+                )
+                .then(
+                    setTimeout(() => {
+                        window.location = `/me/${id}`
+                    }, 3000)
+                )
+                .catch(e => console.log(e))
+        }
     }
 
     return (
@@ -43,12 +61,16 @@ const Settings = () => {
             {!token && <Navigate replace to='/' />}
 
             <div className='settings_div'>
-                <h1>Edita tu perfil</h1>
-                <form method="POST" action="http://localhost:3001/api/users/updateProfile">
-
+                <h1>Edita tu perfil</h1>{
+                    error ? 
+                    <p className='error'>{error}</p> 
+                    : null
+                }
+                <form method='POST' action='http://localhost:3001/api/users/updateProfile'>
                     <label htmlFor="neighborhood ">¿En qué barrio te encontrás? </label>
 
                     <select ref={neighborhood} name="neighborhood" id="neighborhood">
+                        <option value={neighborhoodSaved} selected hidden disabled>{neighborhoodSaved} </option>
                         <option value="Almagro">Almagro</option>
                         <option value="Agronomía">Agronomía</option>
                         <option value="Balvanera"> Balvanera </option>
@@ -97,11 +119,15 @@ const Settings = () => {
                         <option value="Villa del Parque"> Villa del Parque </option>
                         <option value="Vélez Sarsfield"> Vélez Sarsfield  </option>
                     </select>
-                    <label htmlFor="neighborhood"> Número telefónico: </label>
-                    <input name="phoneNumber" type='text' id='phoneNumber'  autoFocus ref={phoneNumber} />
-
-                    <button onClick={sendSettings}> Actualizar mi perfil </button>
+                    <label htmlFor="phoneNumber"> Número telefónico: </label>
+                    <div className='number-input'>
+                        <p> +54</p>
+                        <input name="phoneNumber" defaultValue={phoneNumberSaved} minLength={10} maxLength={10} pattern={'[0-9]+'} type='text' id='phoneNumber' autoFocus ref={phoneNumber} />
+                    </div>
                 </form>
+                <button onClick={sendSettings}> Actualizar mi perfil </button>
+
+
             </div>
         </>
     )
