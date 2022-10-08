@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const port = 3001;
 const cors = require('cors')
@@ -7,6 +8,7 @@ const userRoutes = require('./routes/userRoutes')
 const DbConnection = require('./dbConfig/db');
 const path = require('path')
 const fileUpload = require('express-fileupload');
+
 
 
 DbConnection();

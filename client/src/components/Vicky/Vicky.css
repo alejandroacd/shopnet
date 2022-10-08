@@ -1,0 +1,54 @@
+.box_vicky {
+    display: flex;
+    height: 70vh;
+    width: 70vh;
+    margin:0 auto;
+    position:relative;
+    top:15em;
+    
+    flex-direction: column;
+}
+
+.box_vicky h1 {
+    color: var(--primary);
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 1.5em;
+}
+
+.box_vicky h1 span {
+    color:var(--secondary)
+}
+
+.box_vicky p {
+    text-align: center;
+    color:var(--primary)
+}
+
+.box_vicky button {
+    padding:0.5em;
+    margin:1em auto;
+    width: 50%;
+    background-color: var(--secondary);
+    color:var(--primary);
+    font-weight: bold;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.respuesta {
+    color:var(--primary);
+    display: flex;
+    justify-content: center;
+    text-align:center;
+}
+
+.respuesta {
+    color:blue;
+}
