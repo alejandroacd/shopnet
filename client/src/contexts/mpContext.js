@@ -13,8 +13,8 @@ export const MpProvider = ({ children }) => {
 
     const mpAccessTokenRequest = async (code) => {
      
-        let theCode = code;
-        axios.post(`https://api.mercadopago.com/oauth/token?client_id=72333279858722&client_secret=RQK2n18b4ngiLcibxQrM08ATGYfhipK1&grant_type=authorization_code&redirect_uri=https://theshopnet.netlify.app/successfullBinding&code=${theCode}`)
+        let theCode = await code;
+        axios.post(`https://api.mercadopago.com/oauth/token?client_id=72333279858722&client_secret=By9fcjHOQFoTWmSLwfWGvGVkOGzw6dNX&grant_type=authorization_code&code=${theCode}`)
             .then(res => {
                 axios.post('https://the-shopnet.herokuapp.com/api/users/postAccessToken', {
                     id: localStorage.getItem('id'),
@@ -25,7 +25,7 @@ export const MpProvider = ({ children }) => {
             })
             .then(
                 console.log('Enviadito :P ')
-            )
+            )   
             .catch(e => {
                 console.log('Hubo un error del tipo: ' + e)
             })
