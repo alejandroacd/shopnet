@@ -12,12 +12,12 @@ const SuccessfullBinding = () => {
         const queryDecoded = new URLSearchParams(query)
         const finalCode = queryDecoded.get('code')
 
-         mpAccessTokenRequest(finalCode)
-         .then(() => {
+         await mpAccessTokenRequest(finalCode)
+        /* .then(() => {
             setTimeout(() => {
                 window.location = `/me/${id}`
-            },2000)
-         })
+            },5000)
+         })*/
     },[mpAccessTokenRequest])
     
     return (
