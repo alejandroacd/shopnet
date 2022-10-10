@@ -16,7 +16,7 @@ const Profile = () => {
     const [mpStatus, setMpStatus] = useState(false)
     const [file, setFile] = useState();
     const params = useParams();
-    const mercadoPagoAuthLink = `https://auth.mercadopago.com/authorization?client_id=72333279858722&response_type=code&platform_id=mp&state=${params.id}&redirect_uri=htts://theshopnet.netlify.app/successfullBinding`
+    const mercadoPagoAuthLink = `https://auth.mercadopago.com/authorization?client_id=72333279858722&response_type=code&platform_id=mp&state=${params.id}&redirect_uri=https://theshopnet.netlify.app/successfullBinding`
     
     const succesfullAlert = () => {
         return swal({
