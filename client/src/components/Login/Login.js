@@ -26,7 +26,7 @@ const Login = () => {
         }
 
           else if(isValid){
-            axios.post('http://localhost:3001/api/users/login', {
+            axios.post('https://the-shopnet.herokuapp.com/api/users/login', {
                 email: emailRef.current.value,
                 password: passwordRef.current.value
             })
@@ -68,7 +68,7 @@ const Login = () => {
             { error ? <div className="error">
                 <p> {error} </p>
       </div> : null}    
-            <form method="POST" action="http://localhost:3001/api/users/login">
+            <form method="POST" action="https://the-shopnet.herokuapp.com/api/users/login">
                 <label htmlFor="email"> Correo electrónico </label>
                 <input name="email" ref={emailRef} placeholder="Escribe tu e-mail..." type="email" autofocus="autofocus" />
                 <label htmlFor="password"> Contraseña </label>

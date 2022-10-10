@@ -47,7 +47,7 @@ const Signup = () => {
 
         // POST a la api para registrar usuario
         else {
-            axios.post('http://localhost:3001/api/users', {
+            axios.post('https://the-shopnet.herokuapp.com/api/users', {
                 name: name.current.value,
                 lastName: lastName.current.value,
                 email: email.current.value,
@@ -79,7 +79,7 @@ const Signup = () => {
             <p> Cargando Información </p>
             
             :
-            <form method='POST' action='http://localhost:3001/api/users' >
+            <form method='POST' action='https://the-shopnet.herokuapp.com/api/users' >
             <h1>Registrate</h1>
             { error ? <div className="error">
                 <p> {error} </p>

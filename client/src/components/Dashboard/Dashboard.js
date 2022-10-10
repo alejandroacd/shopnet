@@ -9,7 +9,7 @@ const Dashboard = () => {
     const [datita,setData] = useState([])
 
 useEffect(() => {
-    axios.get('http://localhost:3001/api/products')
+    axios.get('https://the-shopnet.herokuapp.com/api/products')
     .then(res => {
         console.log(res.data)
         setData(res.data)

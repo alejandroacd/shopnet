@@ -16,7 +16,7 @@ const Profile = () => {
     const [mpStatus, setMpStatus] = useState(false)
     const [file, setFile] = useState();
     const params = useParams();
-    const mercadoPagoAuthLink = `https://auth.mercadopago.com/authorization?client_id=72333279858722&response_type=code&platform_id=mp&state=${params.id}&redirect_uri=http://localhost:3000/successfullBinding`
+    const mercadoPagoAuthLink = `https://auth.mercadopago.com/authorization?client_id=72333279858722&response_type=code&platform_id=mp&state=${params.id}&redirect_uri=htts://theshopnet.netlify.app/successfullBinding`
     
     const succesfullAlert = () => {
         return swal({
@@ -54,7 +54,7 @@ const Profile = () => {
         for (let key in file) {
             form.append(key, file[key])
         }
-        axios.post(`http://localhost:3001/api/users/me/${params.id}`, form, {
+        axios.post(`https://the-shopnet.herokuapp.com/api/users/me/${params.id}`, form, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
@@ -72,7 +72,7 @@ const Profile = () => {
     const deletingAccessToken = () => {
         deleteMpAlert()
         setMpStatus(false)
-        axios.post('http://localhost:3001/api/users/deleteAccessToken', {
+        axios.post('https://the-shopnet.herokuapp.com/api/users/deleteAccessToken', {
             id: userLogged._id
         })
         .then(() => {
@@ -84,7 +84,7 @@ const Profile = () => {
     // Seteo de token.
     useEffect(() => {
         setLoading(true)
-        axios.get('http://localhost:3001/api/users/me', {
+        axios.get('https://the-shopnet.herokuapp.com/api/users/me', {
             headers: {
                 "x-access-token": token
             }
@@ -115,7 +115,7 @@ const Profile = () => {
             <div className='profile-container'>
                 <div className='profile_info'>
                     <div ref={backgroundRef} className='image_container'>
-                        <form ref={formRef} method='POST' action="http://localhost:3001/api/users/me/:id">
+                        <form ref={formRef} method='POST' action="https://the-shopnet.herokuapp.com/api/users/me/:id">
                             <input type='file' name="image" onChange={(e) => pickThisImage(e.target.files[0])} />
                             <FiEdit size={30} />
                         </form>
