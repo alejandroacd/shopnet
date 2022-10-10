@@ -12,9 +12,9 @@ export const MpProvider = ({ children }) => {
     // función que hace el request del access token de un usuario en MercadoPago 
 
     const mpAccessTokenRequest = async (code) => {
-        console.log(theCode)
+     
         let theCode = code;
-        await axios.post(`https://api.mercadopago.com/oauth/token?client_id=72333279858722&client_secret=RQK2n18b4ngiLcibxQrM08ATGYfhipK1&grant_type=authorization_code&redirect_uri=https://theshopnet.netlify.app/successfullBinding&code=${theCode}`)
+        axios.post(`https://api.mercadopago.com/oauth/token?client_id=72333279858722&client_secret=RQK2n18b4ngiLcibxQrM08ATGYfhipK1&grant_type=authorization_code&redirect_uri=https://theshopnet.netlify.app/successfullBinding&code=${theCode}`)
             .then(res => {
                 axios.post('https://the-shopnet.herokuapp.com/api/users/postAccessToken', {
                     id: localStorage.getItem('id'),

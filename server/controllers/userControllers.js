@@ -89,7 +89,6 @@ const loginUser = async (req, res) => {
     }    
 }
 
-
 // Subir avatar de perfil
 const uploadImage = async (req, res) => {
 
@@ -182,7 +181,6 @@ const generateToken = (id) => {
         expiresIn: '30d'
     })
 }
-
 
 module.exports = {
     registerUser,
