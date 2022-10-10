@@ -154,7 +154,7 @@ const updateProfile = async (req,res) => {
 
     catch(e){
         res.status(400)
-        throw new Error('Error upadting your profile')
+        throw new Error('Error updating your profile')
     }
 }
 
