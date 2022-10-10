@@ -11,7 +11,7 @@ const SuccessfullBinding = () => {
         const query = window.location.search
         const queryDecoded = new URLSearchParams(query)
         const finalCode = queryDecoded.get('code')
-
+        console.log(finalCode)
          mpAccessTokenRequest(finalCode)
 
 
