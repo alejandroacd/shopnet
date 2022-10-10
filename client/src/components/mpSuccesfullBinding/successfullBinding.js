@@ -15,11 +15,11 @@ const SuccessfullBinding = () => {
          mpAccessTokenRequest(finalCode)
 
 
-        /* .then(() => {
+         .then(() => {
             setTimeout(() => {
                 window.location = `/me/${id}`
-            },5000)
-         })*/
+            },3000)
+         })
 
 
     },[mpAccessTokenRequest])
