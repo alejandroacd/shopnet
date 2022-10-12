@@ -37,7 +37,7 @@ const Login = () => {
                 if(token,_id) {
                     window.location.href = `/me/${_id}`
                     localStorage.setItem('token', token)
-                    localStorage.setItem('id',_id)
+                    localStorage.setItem('id', _id)
                 } 
             })
             .catch(err => {

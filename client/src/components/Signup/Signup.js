@@ -56,7 +56,7 @@ const Signup = () => {
             .then((res) => {
                 setLoading(false)
                 localStorage.setItem('token', res.data.token);
-                localStorage.setItem('id',res.data_id)
+                localStorage.setItem('id',res.data._id)
                 window.location.href = `/me/${res.data._id}`
             })
             .catch(error => {
