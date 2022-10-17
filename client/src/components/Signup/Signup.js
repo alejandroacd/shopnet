@@ -1,6 +1,6 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef} from 'react'
 import '../Signup/Signup.css'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -19,16 +19,13 @@ const Signup = () => {
     var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
 
-    useEffect(() => {
-        if(localStorage.getItem('token')){
-            window.location.href = `me/${localStorage.getItem('id')}`
-        }
-    },[])
-
     const handleSubmit = (e) => {
         setLoading(true)
         e.preventDefault();
-        var isValid = expReg.test(email.current.value)
+        var isValid = expReg.test(email.current.value);
+        let capitalizedName = name.current.value[0].toUpperCase() + name.current.value.substring(1)
+        let capitalizedLastName = lastName.current.value[0].toUpperCase() + lastName.current.value.substring(1)
+
 
         // errors
 
@@ -48,8 +45,8 @@ const Signup = () => {
         // POST a la api para registrar usuario
         else {
             axios.post('https://the-shopnet.herokuapp.com/api/users', {
-                name: name.current.value,
-                lastName: lastName.current.value,
+                name: capitalizedName,
+                lastName: capitalizedLastName,
                 email: email.current.value,
                 password: password.current.value
             }) 
@@ -69,8 +66,9 @@ const Signup = () => {
 
         <>
 
-        
-
+        {
+            token && <Navigate replace to={`/me/${id}`}/>
+        }
         
         <div className='signup-container'>
             {loading 

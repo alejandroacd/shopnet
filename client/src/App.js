@@ -7,7 +7,7 @@ import Header from './components/Header/Header'
 import Login from './components/Login/Login'
 import Profile from './components/Profile/Profile'
 import Settings from './components/Settings/Settings'
-import Vicky from './components/Vicky/Vicky'
+import MobileMenu  from './components/MobileMenu/MobileMenu';
 import SuccessfullBinding from './components/mpSuccesfullBinding/successfullBinding';
 import { MpProvider } from './contexts/mpContext'
 
@@ -26,9 +26,10 @@ function App() {
               <Route exact path='/me/:id' element={<Profile />} />
               <Route exact path='/me/:id/settings' element={<Settings />} />
               <Route exact path='/successfullBinding' element={<SuccessfullBinding />} />
-              <Route exact path='vickynarvay' element={<Vicky />} />
             </Routes>
 
+            
+            <MobileMenu />
           </div>
         </BrowserRouter>
       </MpProvider>

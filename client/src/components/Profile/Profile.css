@@ -7,7 +7,7 @@
     align-items: center;
     flex-direction: column;
     position:relative;
-    top:3em;
+    top:3.5em;
 }
 .profile_info form {
   
@@ -112,6 +112,17 @@
     
 }
 
+.back-button {
+  position:relative;
+  width: 90%;
+  opacity: 0.9;
+  margin-bottom:1em;
+}
+.arrow_icon {
+  color: #5681d1c0;
+  font-weight: bold;
+  margin-right: 0.2em;
+}
 
 @keyframes App-logo-spin {
     from {
@@ -128,6 +139,7 @@
     .profile-container .image_container {
       width: 200px;
       height: 200px;
+      
     }
 
 
@@ -136,4 +148,12 @@
       width: 320px;
       font-size:1em;
     }
+    .back-button {
+     left: 0;
+     width: 70%;
+     margin: 0 auto;
+     padding-bottom: 3em;
+     cursor: pointer;
+    }
+ 
   }

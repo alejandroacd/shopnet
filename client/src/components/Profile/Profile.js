@@ -3,13 +3,15 @@ import '../Profile/Profile.css'
 import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
+import { BiArrowBack,BiHome } from 'react-icons/bi'
 import swal from 'sweetalert'
-import { Navigate, Link } from 'react-router-dom'
+import { Navigate, Link, useNavigate } from 'react-router-dom'
 
 const Profile = () => {
     let id = localStorage.getItem('id')
     let token = localStorage.getItem('token');
     const [loading,setLoading] = useState(false)
+    const navigate = useNavigate();
     const backgroundRef = useRef();
     const formRef = useRef();
     const [userLogged, setUserLogged] = useState([]);
@@ -112,7 +114,14 @@ const Profile = () => {
         <>
 
         {!token && <Navigate replace to='/'/>}
+
             <div className='profile-container'>
+                <div className='back-button' onClick={() => navigate(-1)}>
+                <BiArrowBack className='arrow_icon' size={20}/>
+                <BiHome  size={25} />
+                <br />
+                 <p>  </p>
+                </div>
                 <div className='profile_info'>
                     <div ref={backgroundRef} className='image_container'>
                         <form ref={formRef} method='POST' action="https://the-shopnet.herokuapp.com/api/users/me/:id">

@@ -21,40 +21,14 @@ a {
     
 }
 
-.d-none {
-    transition: 1s;
-    display: none;
-    transform: translateX(-100%)
-    
 
-}
 
-.d-flex {
-   
-    transition: 1s;
-    transform: translateX(0);
-}
-
-.container_header .nav-list-burger li {
-    text-align: center;
-    color:var(--primary);
-    list-style: none;
-    margin:1em;
-    font-weight: bold;
-
-}
 .container_header {
     z-index:1000;
-   position:absolute;
+   position:fixed;
    width: 100%;
    background-color: var(--backgrounds);
-   /*
-   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-   */
    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-   
-   /*box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;*/
- 
 }
 
 .header {
