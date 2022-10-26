@@ -4,7 +4,6 @@
     top:7em;
     display: flex;
     flex-direction: column;
-
     
 }
 
@@ -55,4 +54,31 @@
 
 .option svg {
     color:var(--secondary);
+}
+
+@media all and (min-width: 768px) {
+       .categories_box {
+          top: 10em;
+       }
+}
+
+@media all and (min-width: 1024px) {
+    .categories_box {
+        justify-content: center;
+        width: 70%;
+        margin: 0 auto;
+        top:5em;
+    }
+
+    .option {
+    
+        width: 25%;
+    }
+} 
+
+@media all and (min-width:1920px){
+    .categorias_options {
+       width: 70%;
+    } 
+
 }

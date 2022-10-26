@@ -11,7 +11,7 @@ const MobileMenu = () => {
       <div className='mobile-menu-container'>
 
          <div className='mobile_menu_option'>
-            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined } to={'/'}>
+            <NavLink  className={({isActive}) => isActive ? 'styleNavLink' : undefined } to={'/'}>
              <AiOutlineHome size={25} />
                Home
             </NavLink> 
@@ -20,7 +20,7 @@ const MobileMenu = () => {
 
          <div className='mobile_menu_option'>
             
-            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined }  to={'/login'} end>
+            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined }  to={'/search'} end>
             <AiOutlineSearch size={25} />
                Buscar
             </NavLink>
@@ -37,7 +37,7 @@ const MobileMenu = () => {
 
          <div className='mobile_menu_option'>
             
-            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined }  to={'/signup'} end>
+            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined }  to={'/faq'} end>
             <AiOutlineQuestionCircle size={25} />
               FAQ
             </NavLink>

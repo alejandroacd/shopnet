@@ -40,3 +40,15 @@
     font-weight: bold;
     transform: scale(1.2);
 }
+
+@media all and (min-width: 768px) {
+    .mobile_menu_option a {
+        font-size: 1.2em;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .mobile-menu-container {
+        display: none;
+    }
+}

@@ -1,0 +1,40 @@
+.faq_container {
+    height: 70vh;
+    position: relative;
+    top:7em;
+}
+
+.faq_container h1 {
+    text-align: center;
+    color:var(--primary)
+}
+
+.faq_container h1 span {
+    color:var(--secondary)
+}
+
+.faq_container .faq_box {
+    width: 85%;
+    margin: 0 auto;
+    color: var(--primary);
+    margin-top:1em;
+}
+
+.faq_box .question {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin:1em;
+    letter-spacing: 1px;
+    
+}
+
+.faq_box .answer {
+    margin:1em;
+    letter-spacing: 1px;
+}
+
+.blue {
+    font-weight: bold;
+    font-size: 1.3em;
+    color:var(--secondary)
+}

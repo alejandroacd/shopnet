@@ -8,8 +8,8 @@ const Categories = () => {
 return (
     <>
     <div className='categories_box'>
-        <h1> Categorías <span> _ </span> </h1>
        <Search />
+       <h1> Categorías <span> _ </span> </h1>
         <div className='categorias_options'>
 
             <div className='ropa-option option'>
