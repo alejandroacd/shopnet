@@ -113,7 +113,7 @@ const Profile = () => {
     return (
         <>
 
-        {!token && <Navigate replace to='/'/>}
+        {!token && <Navigate replace to='/login'/>}
 
             <div className='profile-container'>
                 <div className='back-button' onClick={() => navigate(-1)}>

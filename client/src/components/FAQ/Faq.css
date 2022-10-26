@@ -1,7 +1,8 @@
 .faq_container {
-    height: 70vh;
+    height:70vh;
     position: relative;
     top:7em;
+    margin-bottom: 50em;
 }
 
 .faq_container h1 {
@@ -17,7 +18,8 @@
     width: 85%;
     margin: 0 auto;
     color: var(--primary);
-    margin-top:1em;
+    margin-top:0.5em;
+  
 }
 
 .faq_box .question {
