@@ -7,12 +7,13 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
 
+    const token = localStorage.getItem('token')
     const [isLoggedIn,setLoggedIn] = useState(false);
     const identifier = localStorage.getItem('id') || null;
     
     useEffect(() => {
-        if(localStorage.getItem('token')){
-            setLoggedIn(!isLoggedIn)
+        if(token){
+            setLoggedIn(true)
         }
     }, [isLoggedIn])
   
@@ -33,9 +34,6 @@ const Header = () => {
                 <Link to="signup"> <li> Ver categorías </li> </Link>
                 <Link to="signup"> <li> FAQ </li> </Link>
             </ul>
-
-           
-           
         </header>
 
         

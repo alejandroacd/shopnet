@@ -1,0 +1,24 @@
+.search_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top:1em;
+}
+
+.search-global {
+    
+        width: 85%;
+        margin:0 auto;
+        border-radius: 30px;
+        background-color: var(--backgrounds);
+        border: none;
+        padding: 0.7em;
+        font-weight: bold;
+        color:var(--primary)
+}
+
+.search_container svg {
+   
+        margin:0.3em;
+        color: var(--secondary);
+}

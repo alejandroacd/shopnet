@@ -1,0 +1,58 @@
+.categories_box {
+    height: 100vh;
+    position:relative;
+    top:7em;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.categories_box h1 {
+    text-align: center;
+    color:var(--primary);
+
+}
+
+.categories_box h1 span {
+    color:var(--secondary)
+}
+
+.categorias_options {
+   
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    position: relative;
+    margin: 0 auto;
+    justify-content: space-around;
+    padding-bottom:2em;
+
+}
+
+.option {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    margin:1.4em;
+}
+
+.option:hover {
+    background-color: var(--backgrounds);
+    transition:0.1s ease-in-out
+}
+
+.option p {
+    font-size: 1.2em;
+    color:var(--primary);
+    margin:0.5em;
+}
+
+.option svg {
+    color:var(--secondary);
+}
