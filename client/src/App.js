@@ -10,6 +10,7 @@ import Settings from './components/Settings/Settings'
 import MobileMenu  from './components/MobileMenu/MobileMenu';
 import SuccessfullBinding from './components/mpSuccesfullBinding/successfullBinding';
 import Faq from './components/FAQ/Faq'
+import PostProduct from './components/PostProduct/PostProduct';
 import Categories from './components/Categories/Categories'
 import { MpProvider } from './contexts/mpContext'
 
@@ -30,6 +31,8 @@ function App() {
               <Route exact path='/successfullBinding' element={<SuccessfullBinding />} />
               <Route exact path='/search' element={<Categories />} />
               <Route exact path='/faq' element={<Faq />} />
+              <Route exact path="/postProduct" element={<PostProduct />} />
+              
             </Routes>
 
             

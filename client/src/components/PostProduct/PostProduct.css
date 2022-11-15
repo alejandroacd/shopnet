@@ -1,0 +1,37 @@
+.form_container {
+    height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 85%;
+   
+    
+}
+
+h2 {
+    color:var(--primary);
+    text-align: center;
+    position: relative;
+    bottom: 2em;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.underscore {
+    color:var(--secondary);
+}
+
+.form-photo {
+    
+    height: 100px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+
+    text-align: center;
+}
