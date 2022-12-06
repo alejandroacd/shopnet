@@ -24,11 +24,18 @@
   width:100%;
   margin: 0 auto;
   padding:0.4em;
-  background-color: transparent;
   border-right: none;
+  background-color: var(--backgrounds);
   color:var(--primary);
   font-weight: bold;
+}
 
+
+
+
+
+.login-container form input:hover::after{
+    width: 100%;
 }
 
 .login-container form label {

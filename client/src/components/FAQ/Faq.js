@@ -2,10 +2,18 @@ import React from 'react'
 import '../FAQ/Faq.css'
 
 const Faq = () => {
+
+
+
+
+
+
+
+    
     return (
 
         <div className='faq_container'>
-            <h1>FAQ<span>_</span></h1>
+            <h1> FAQ <span> _ </span></h1>
 
             <div className='faq_box'>
                 <p className='question'> <span className='blue'>¿</span>

@@ -9,80 +9,84 @@ const Login = () => {
 
     let token = localStorage.getItem('token')
     let id = localStorage.getItem('id')
-    const [loading,setLoading] = useState(false)
-    const [error,setError] = useState("");
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("");
     const emailRef = useRef();
     const passwordRef = useRef();
     var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-    const loguear =  async (e) => {
+    const loguear = async (e) => {
         setLoading(true);
         e.preventDefault();
         const isValid = expReg.test(emailRef.current.value);
 
-        if(!isValid){
+        if (!isValid) {
             setLoading(false);
             setError('Introducí un email válido :)')
         }
 
-          else if(isValid){
+        else if (isValid) {
             axios.post('https://the-shopnet.herokuapp.com/api/users/login', {
                 email: emailRef.current.value,
                 password: passwordRef.current.value
             })
-            .then(res => {
-                console.log(res.data)
-                setLoading(true)
-                const {token, _id } = res.data
-                if(token,_id) {
-                    window.location.href = `/me/${_id}`
-                    localStorage.setItem('token', token)
-                    localStorage.setItem('id', _id)
-                } 
-            })
-            .catch(err => {
-                setLoading(false)
-                setError('Usuario y/o contraseña inválido')
-            
-            
-            })
+                .then(res => {
+                    console.log(res.data)
+                    setLoading(true)
+                    const { token, _id } = res.data
+                    if (token, _id) {
+                        window.location.href = `/me/${_id}`
+                        localStorage.setItem('token', token)
+                        localStorage.setItem('id', _id)
+                    }
+                })
+                .catch(err => {
+                    setLoading(false)
+                    setError('Usuario y/o contraseña inválido')
+
+
+                })
         }
     }
 
     return (
 
         <>
-        
-        {token && <Navigate replace to={`me/${id}`}/>}
 
-        <div className='login-container'>
+            {token && <Navigate replace to={`me/${id}`} />}
 
-            {loading 
-            ?
-            <p>Cargando Información </p>
-            
-            :
-            <>
-            <h1>Inicia sesión :)</h1>
-            <p> Para poder postear y comprar productos </p>     
-            { error ? <div className="error">
-                <p> {error} </p>
-      </div> : null}    
-            <form method="POST" action="https://the-shopnet.herokuapp.com/api/users/login">
-                <label htmlFor="email"> Correo electrónico </label>
-                <input name="email" ref={emailRef} placeholder="Escribe tu e-mail..." type="email" autofocus="autofocus" />
-                <label htmlFor="password"> Contraseña </label>
-                <input name="password" ref={passwordRef} placeholder="Escribe tu contraseña" type="password" />
-                <p>No tienes cuenta? <Link to="/signup">Registrate acá!</Link></p>
-                <button className='register_button' onClick={loguear} > Login </button>
-            </form>
-            </>
-            }
-        
-        </div>
+            <div className='login-container'>
+
+                {loading
+                    ?
+                    <p>Cargando Información </p>
+
+                    :
+                    <>
+                        <h1>Inicia sesión :)</h1>
+                        <p> Para poder postear y comprar productos </p>
+                        {error ? <div className="error">
+                            <p> {error} </p>
+                        </div> : null}
+                        <form method="POST" action="https://the-shopnet.herokuapp.com/api/users/login">
+                            <label htmlFor="email"> Correo electrónico </label>
+                            <div className='input-container'>
+                                <input name="email" ref={emailRef} placeholder="Escribe tu e-mail..." type="email" autofocus="autofocus" />
+                            </div>
+                            <label htmlFor="password"> Contraseña </label>
+                            <div className='input-container'>
+                                <input name="password" ref={passwordRef} placeholder="Escribe tu contraseña" type="password" />
+                            </div>
+                            <p>No tienes cuenta? <Link to="/signup">Registrate acá!</Link></p>
+                            <button className='register_button' onClick={loguear} > Login </button>
+                        </form>
+                    </>
+                }
+
+            </div>
 
 
-     </>  
+        </>
     )
 }
 

@@ -20,6 +20,9 @@ const Profile = () => {
     const params = useParams();
     const mercadoPagoAuthLink = `https://auth.mercadopago.com/authorization?client_id=72333279858722&response_type=code&platform_id=mp&state=${params.id}&redirect_uri=https://theshopnet.netlify.app/successfullBinding`
     
+
+
+
     const succesfullAlert = () => {
         return swal({
             title: 'Tu foto ha sido actualizada con éxito :)',
@@ -44,6 +47,7 @@ const Profile = () => {
 
     // previsualiza la imágen antes de enviarla al server 
     const pickThisImage = (e) => {
+        console.log(e)
         setFile({
             image: e
         })
@@ -54,7 +58,7 @@ const Profile = () => {
     const enviarImagen = () => {
         const form = new FormData();
         for (let key in file) {
-            form.append(key, file[key])
+            form.append(key, file[key]) 
         }
         axios.post(`https://the-shopnet.herokuapp.com/api/users/me/${params.id}`, form, {
             headers: {
@@ -119,8 +123,6 @@ const Profile = () => {
                 <div className='back-button' onClick={() => navigate(-1)}>
                 <BiArrowBack className='arrow_icon' size={20}/>
                 <BiHome  size={25} />
-                <br />
-                 <p>  </p>
                 </div>
                 <div className='profile_info'>
                     <div ref={backgroundRef} className='image_container'>

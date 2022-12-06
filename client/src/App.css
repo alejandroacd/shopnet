@@ -22,10 +22,9 @@ background-color: var(--backgrounds);
 }
 
 input:focus {
-
     outline: none;
-    border-bottom-color: var(--secondary);
-    transition: 0.5s;
+    border-bottom: 1px solid var(--secondary);
+    transition: 0.3s;
 }
 
 button {

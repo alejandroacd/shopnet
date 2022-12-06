@@ -21,8 +21,6 @@ a {
     
 }
 
-
-
 .container_header {
     z-index:1000;
    position:fixed;
@@ -83,7 +81,7 @@ a {
         background: rgb(32,97,207);
         background: linear-gradient(90deg, rgba(32,97,207,1) 19%, rgba(25,76,171,1) 54%);
         height: 2px;
-        width: 0;
+        width:0;
         left:0;
         bottom: 10px;
         transition: 0.5s;
