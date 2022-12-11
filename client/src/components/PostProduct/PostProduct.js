@@ -18,33 +18,32 @@ const PostProduct = () => {
   const descriptionRef = useRef('');
   const priceRef = useRef('');
   const image1 = useRef();
-  const [form, setForm] = useState({})
+  const [imagesForm, setForm] = useState({})
 
   const pickImage = (selected) => {
     let nameOfAttr = selected.target.id;
     setForm({
-      ...form,
+      ...imagesForm,
       [nameOfAttr]: selected.target.files[0]
     })
 
     selected.target.parentNode.style.backgroundImage = `url(${URL.createObjectURL(selected.target.files[0])})`
   }
 
-  const mostrarConsole = (e) => {
+  const sendNewProduct = (e) => {
     e.preventDefault();
 
-    const formularioCompleto = {
+    const form = {
       productName: nameRef.current.value,
       description: descriptionRef.current.value,
       price: priceRef.current.value,
-      ...form
+      ...imagesForm
     } 
 
-    console.log(formularioCompleto)
+    console.log(form)
   
   }
   
-
   return (
 
     <div className='form_container'>
@@ -103,7 +102,7 @@ const PostProduct = () => {
         <label htmlFor='Mercadopago'> Mercadopago </label>
 
         </div>
-        <button onClick={mostrarConsole} className="submit_product_button" type='submit'> Publicar </button>
+        <button onClick={sendNewProduct} className="submit_product_button" type='submit'> Publicar </button>
 
       </form>
 

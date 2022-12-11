@@ -60,6 +60,8 @@ const Profile = () => {
         for (let key in file) {
             form.append(key, file[key]) 
         }
+
+        console.log(form)
         axios.post(`https://the-shopnet.herokuapp.com/api/users/me/${params.id}`, form, {
             headers: {
                 'Content-Type': 'multipart/form-data'

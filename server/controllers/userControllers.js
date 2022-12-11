@@ -110,7 +110,6 @@ const uploadImage = async (req, res) => {
 }
 
 
-
 // Obtener usuario logueado
 const getMyUser = async (req, res) => {
     try {
@@ -126,7 +125,7 @@ const updateTokens = async (req,res) => {
 
     console.log(access_token,refresh_token)
     res.json({
-        message:'everythign well'
+        message:'everything well'
     })
 
     try {
