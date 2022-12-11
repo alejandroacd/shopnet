@@ -62,7 +62,7 @@ const Profile = () => {
         }
 
         console.log(form)
-        axios.post(`https://the-shopnet.herokuapp.com/api/users/me/${params.id}`, form, {
+        axios.post(`https://shopnet.up.railway.app/api/users/me/${params.id}`, form, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
@@ -80,7 +80,7 @@ const Profile = () => {
     const deletingAccessToken = () => {
         deleteMpAlert()
         setMpStatus(false)
-        axios.post('https://the-shopnet.herokuapp.com/api/users/deleteAccessToken', {
+        axios.post('https://shopnet.up.railway.app/api/users/deleteAccessToken', {
             id: userLogged._id
         })
         .then(() => {
@@ -92,7 +92,7 @@ const Profile = () => {
     // Seteo de token.
     useEffect(() => {
         setLoading(true)
-        axios.get('https://the-shopnet.herokuapp.com/api/users/me', {
+        axios.get('https://shopnet.up.railway.app/api/users/me', {
             headers: {
                 "x-access-token": token
             }
@@ -128,7 +128,7 @@ const Profile = () => {
                 </div>
                 <div className='profile_info'>
                     <div ref={backgroundRef} className='image_container'>
-                        <form ref={formRef} method='POST' action="https://the-shopnet.herokuapp.com/api/users/me/:id">
+                        <form ref={formRef} method='POST' action="https://shopnet.up.railway.app/api/users/me/:id">
                             <input type='file' name="image" onChange={(e) => pickThisImage(e.target.files[0])} />
                             <FiEdit size={30} />
                         </form>

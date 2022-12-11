@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [datita,setData] = useState([])
 
 useEffect(() => {
-    axios.get('https://the-shopnet.herokuapp.com/api/products')
+    axios.get('https://shopnet.up.railway.app/api/products')
     .then(res => {
         console.log(res.data)
         setData(res.data)

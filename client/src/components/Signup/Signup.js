@@ -44,7 +44,7 @@ const Signup = () => {
 
         // POST a la api para registrar usuario
         else {
-            axios.post('https://the-shopnet.herokuapp.com/api/users', {
+            axios.post('https://shopnet.up.railway.app/api/users', {
                 name: capitalizedName,
                 lastName: capitalizedLastName,
                 email: email.current.value,
@@ -77,7 +77,7 @@ const Signup = () => {
             <p> Cargando Información </p>
             
             :
-            <form method='POST' action='https://the-shopnet.herokuapp.com/api/users' >
+            <form method='POST' action='https://shopnet.up.railway.app/api/users' >
             <h1>Registrate</h1>
             { error ? <div className="error">
                 <p> {error} </p>
