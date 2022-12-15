@@ -74,7 +74,7 @@ const Signup = () => {
             {loading 
             
             ? 
-            <p> Cargando Información </p>
+            <p> ... </p>
             
             :
             <form method='POST' action='https://shopnet.up.railway.app/api/users' >
