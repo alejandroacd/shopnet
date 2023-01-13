@@ -36,7 +36,7 @@ const Settings = () => {
             setError('Debes introducir un número valido, de 10 dígitos. Incluyendo el código regional. Ejemplo: 1159873698')
         }
         else {
-            axios.post('https://shopnet.up.raiway.app/api/users/updateProfile', {
+            axios.post('https://shopnet.up.railway.app/api/users/updateProfile', {
                 identificador: localStorage.getItem('id'),
                 neighborhood: neighborhood.current.value,
                 phoneNumber: phoneNumber.current.value
@@ -66,7 +66,7 @@ const Settings = () => {
                     <p className='error'>{error}</p> 
                     : null
                 }
-                <form method='POST' action='https://shopnet.up.raiway.app/api/users/updateProfile'>
+                <form method='POST' action='https://shopnet.up.railway.app/api/users/updateProfile'>
                     <label htmlFor="neighborhood ">¿En qué barrio te encontrás? </label>
 
                     <select ref={neighborhood} name="neighborhood" id="neighborhood">
