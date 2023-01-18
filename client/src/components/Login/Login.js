@@ -31,20 +31,18 @@ const Login = () => {
                 password: passwordRef.current.value
             })
                 .then(res => {
-                    console.log(res.data)
                     setLoading(true)
                     const { token, _id } = res.data
                     if (token, _id) {
                         window.location.href = `/me/${_id}`
                         localStorage.setItem('token', token)
                         localStorage.setItem('id', _id)
+                        localStorage.setItem('user', JSON.stringify(res.data))
                     }
                 })
                 .catch(err => {
                     setLoading(false)
                     setError('Usuario y/o contraseña inválido')
-
-
                 })
         }
     }

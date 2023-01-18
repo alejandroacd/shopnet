@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
 
     if (!name || !lastName || !email || !password) {
         res.status(400).json({
-            message:' Rellená todos los campos'
+            message: ' Rellená todos los campos'
         })
         throw new Error('please add all fields')
     }
@@ -21,7 +21,7 @@ const registerUser = async (req, res) => {
 
     if (userExists) {
         res.status(400).send({
-            message:'Usuario existente'
+            message: 'Usuario existente'
         })
         throw new Error('User already exists')
     }
@@ -68,8 +68,8 @@ const loginUser = async (req, res) => {
 
     // check for email of user 
     const user = await User.findOne({ email })
-    
-    if (user && (await bcrypt.compare(password, user.password))){
+
+    if (user && (await bcrypt.compare(password, user.password))) {
         res.json({
             _id: user.id,
             name: user.name,
@@ -79,14 +79,17 @@ const loginUser = async (req, res) => {
             phoneNumber: user.phoneNumber,
             neighborhood: user.neighborhood,
             isLoggedIn: true,
+            mercadopagoAccessToken: user.mercadopagoAccessToken,
+            mercadopagoRefreshToken: user.mercadopagoRefreshToken
+
         })
     } else {
         res.status(400).send({
-            message:'User and password does not match'
+            message: 'User and password does not match'
         })
 
-   
-    }    
+
+    }
 }
 
 // Subir avatar de perfil
@@ -120,14 +123,13 @@ const getMyUser = async (req, res) => {
     }
 }
 
-const updateTokens = async (req,res) => {
-    const {access_token, refresh_token, id} = req.body;
+const updateTokens = async (req, res) => {
+    const { access_token, refresh_token, id } = req.body;
 
-    console.log(access_token,refresh_token)
+    console.log(access_token, refresh_token)
     res.json({
-        message:'everything well'
+        message: 'everything well'
     })
-
     try {
         const updated = await User.findByIdAndUpdate(id, {
             mercadopagoAccessToken: access_token,
@@ -135,22 +137,23 @@ const updateTokens = async (req,res) => {
         })
         console.log(updated)
     }
-    catch(e){
+    catch (e) {
         console.log(e)
-    } }
-    
+    }
+}
 
-const updateProfile = async (req,res) => {
+
+const updateProfile = async (req, res) => {
     const { identificador, neighborhood, phoneNumber } = req.body;
 
     try {
-       const updated = await User.findByIdAndUpdate(identificador, {
-        neighborhood,
-        phoneNumber: `+54${phoneNumber}`
-       })
+        const updated = await User.findByIdAndUpdate(identificador, {
+            neighborhood,
+            phoneNumber: `+54${phoneNumber}`
+        })
     }
 
-    catch(e){
+    catch (e) {
         res.status(400)
         throw new Error('Error updating your profile')
     }
@@ -158,7 +161,7 @@ const updateProfile = async (req,res) => {
 
 
 
-const deleteAccessToken = async (req,res) => {
+const deleteAccessToken = async (req, res) => {
     const { id } = req.body;
     try {
         const updated = await User.findByIdAndUpdate(id, {
@@ -167,7 +170,7 @@ const deleteAccessToken = async (req,res) => {
         })
         console.log(updated)
     }
-    catch(e){
+    catch (e) {
         res.status(400)
         throw new Error('Error deleting your MercadoPago association')
     }
@@ -176,7 +179,7 @@ const deleteAccessToken = async (req,res) => {
 // Función que genera token (JWT)
 
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {   
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d'
     })
 }

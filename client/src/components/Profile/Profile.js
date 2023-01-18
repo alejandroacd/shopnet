@@ -10,18 +10,17 @@ import { Navigate, Link, useNavigate } from 'react-router-dom'
 const Profile = () => {
     let id = localStorage.getItem('id')
     let token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'))
     const [loading,setLoading] = useState(false)
     const navigate = useNavigate();
     const backgroundRef = useRef();
     const formRef = useRef();
-    const [userLogged, setUserLogged] = useState([]);
     const [mpStatus, setMpStatus] = useState(false)
     const [file, setFile] = useState();
     const params = useParams();
     const mercadoPagoAuthLink = `https://auth.mercadopago.com/authorization?client_id=72333279858722&response_type=code&platform_id=mp&state=${params.id}&redirect_uri=https://theshopnet.netlify.app/successfullBinding`
     
-
-
+    
 
     const succesfullAlert = () => {
         return swal({
@@ -81,7 +80,7 @@ const Profile = () => {
         deleteMpAlert()
         setMpStatus(false)
         axios.post('https://shopnet.up.railway.app/api/users/deleteAccessToken', {
-            id: userLogged._id
+            id: user._id
         })
         .then(() => {
             console.log('borrado')
@@ -90,31 +89,17 @@ const Profile = () => {
     }
 
     // Seteo de token.
+
     useEffect(() => {
-        setLoading(true)
-        axios.get('https://shopnet.up.railway.app/api/users/me', {
-            headers: {
-                "x-access-token": token
-            }
-        })
-            .then((res) => {
-                console.log(res.data)
-                setUserLogged(res.data)
-                setLoading(false)
-                if(res.data.mercadopagoAccessToken !== null){
-                    setMpStatus(true)
-                }
-            })
-            .then(
-                userLogged.userImage ? backgroundRef.current.style.backgroundImage = `url(${userLogged.userImage})` : null
-            )
 
-            .catch(err => {
-                setLoading(false)
-                console.log(err)
-            })
+        console.log(user)
 
-    }, [userLogged.userImage,mpStatus])
+        if(user.mercadopagoAccessToken !== null) {
+            setMpStatus(true)
+        }
+
+        
+    },[ ])
 
     return (
         <>
@@ -135,9 +120,9 @@ const Profile = () => {
                     </div>
                     <button className='image-submit' type='submit' onClick={enviarImagen}> Guardar foto </button>
 
-                    <h1> {userLogged.name} {userLogged.lastName} </h1>
-                    <p> {`Barrio: ${userLogged.neighborhood}`} </p>
-                    <p> {`Número telefónico: ${userLogged.phoneNumber}`} </p>
+                    <h1> {user.name} {user.lastName} </h1>
+                    <p> {`Barrio: ${user.neighborhood}`} </p>
+                    <p> {`Número telefónico: ${user.phoneNumber}`} </p>
                 </div>
 
                 {
