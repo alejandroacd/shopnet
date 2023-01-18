@@ -91,15 +91,19 @@ const Profile = () => {
     // Seteo de token.
 
     useEffect(() => {
+        
+        console.log(user.image)
 
-        console.log(user)
+        if(user.image !== "false") {
+            backgroundRef.current.style.backgroundImage = `url(${user.image})`
+        }
 
         if(user.mercadopagoAccessToken !== null) {
             setMpStatus(true)
         }
 
         
-    },[ ])
+    },[user.mercadopagoAccessToken, user.image])
 
     return (
         <>
