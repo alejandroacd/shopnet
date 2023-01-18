@@ -51,7 +51,6 @@ const registerUser = async (req, res) => {
             lastName: user.lastName,
             email: user.email,
             token: generateToken(user._id),
-            image: user.imageUrl,
             mercadopagoAccessToken: user.mercadopagoAccessToken,
             mercadopagoRefreshToken: user.mercad
         })
@@ -77,10 +76,11 @@ const loginUser = async (req, res) => {
             name: user.name,
             lastName: user.lastName,
             email: user.email,
-            token: generateToken(user._id),
+            token: generateToken(user._id), 
             phoneNumber: user.phoneNumber,
             neighborhood: user.neighborhood,
             isLoggedIn: true,
+            image: user.userImage,
             mercadopagoAccessToken: user.mercadopagoAccessToken,
             mercadopagoRefreshToken: user.mercadopagoRefreshToken
 
