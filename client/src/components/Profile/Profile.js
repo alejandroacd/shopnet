@@ -10,7 +10,9 @@ import { Navigate, Link, useNavigate } from 'react-router-dom'
 const Profile = () => {
     let id = localStorage.getItem('id')
     let token = localStorage.getItem('token');
-    const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem('user'));
+    const phoneNumber = localStorage.getItem('phoneNumber') || user.phoneNumber;
+    const neighborhood = localStorage.getItem('neighborhood') || user.neighborhood;
     const [loading,setLoading] = useState(false)
     const navigate = useNavigate();
     const backgroundRef = useRef();
@@ -103,7 +105,7 @@ const Profile = () => {
         }
 
         
-    },[user.mercadopagoAccessToken, user.image])
+    },[user.mercadopagoAccessToken, user.image,user.neighborhood,user.phoneNumber])
 
     return (
         <>
@@ -125,8 +127,8 @@ const Profile = () => {
                     <button className='image-submit' type='submit' onClick={enviarImagen}> Guardar foto </button>
 
                     <h1> {user.name} {user.lastName} </h1>
-                    <p> {`Barrio: ${user.neighborhood}`} </p>
-                    <p> {`Número telefónico: ${user.phoneNumber}`} </p>
+                    <p> {`Barrio: ${neighborhood ? neighborhood : user.neighborhood}`} </p>
+                    <p> {`Número telefónico: ${phoneNumber ? phoneNumber : user.phoneNumber}`} </p>
                 </div>
 
                 {
