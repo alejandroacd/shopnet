@@ -14,21 +14,10 @@ const postSomeProduct = async (req,res) => {
         res.status(400)
         throw new Error('Please add the necessary info')
     }
+    const urls = [];
 
-    try {
-        const result = await uploadUserImage(req.files.image.tempFilePath)
-        await fs.remove(req.files.image.tempFilePath);
-        console.log(result)
-        postToSend = {
-            ...req.body,
-             
-        }
-    }
-    catch(e){
-        res.status(500).json({message:"Server error, cannot post the product for some interal reason."})
-    }
-
-    console.log(postToSend)
+    
+    console.log(req.body)
 }
 
 //obtener algún producto por id

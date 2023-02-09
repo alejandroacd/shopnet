@@ -55,7 +55,15 @@ const PostProduct = () => {
     for(let key in form){
       formToServer.append(key, form[key])
     }
-    
+
+    axios.post(`https://shopnet.up.railway.app/api/products/`, formToServer, {
+      headers: {
+          'Content-Type': 'multipart/form-data'
+      },
+  })
+  .then(() => console.log('todo bene'))
+  .catch((err) => console.log(err))
+
   }
   
   return (
