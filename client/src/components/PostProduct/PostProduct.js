@@ -64,7 +64,10 @@ const PostProduct = () => {
   .then(() => console.log('todo bene'))
   .catch((err) => console.log(err))
 
+  
   }
+
+
   
   return (
     <>

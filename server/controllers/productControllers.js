@@ -14,10 +14,8 @@ const postSomeProduct = async (req,res) => {
         res.status(400)
         throw new Error('Please add the necessary info')
     }
-    const urls = [];
 
-    
-    console.log(req.body)
+    res.json({message: {...req.body}})
 }
 
 //obtener algún producto por id
