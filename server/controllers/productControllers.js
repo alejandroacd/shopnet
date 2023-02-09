@@ -15,7 +15,7 @@ const postSomeProduct = async (req,res) => {
         throw new Error('Please add the necessary info')
     }
 
-    res.json({message: {...req.body}})
+    res.json({message: {...req.files}})
 }
 
 //obtener algún producto por id

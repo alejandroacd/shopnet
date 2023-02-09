@@ -61,10 +61,9 @@ const PostProduct = () => {
           'Content-Type': 'multipart/form-data'
       },
   })
-  .then(() => console.log('todo bene'))
+  .then((res) => console.log('todo bene: ' + JSON.stringify(res.data)))
   .catch((err) => console.log(err))
 
-  
   }
 
 
