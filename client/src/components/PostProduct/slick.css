@@ -87,7 +87,7 @@
     width: 180px !important;
     height: 250px;
     min-height: 1px;
-    border:1px solid black;
+    border:3px dotted var(--backgrounds)
 }
 [dir='rtl'] .slick-slide
 {

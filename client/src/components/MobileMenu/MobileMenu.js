@@ -5,8 +5,7 @@ import { AiOutlineHome, AiOutlineSearch, AiOutlineQuestionCircle, AiOutlineUser,
 
 const MobileMenu = () => {
 
-
-
+   const id = localStorage.getItem('id')
    return (
       <div className='mobile-menu-container'>
 
@@ -28,7 +27,7 @@ const MobileMenu = () => {
 
          <div className='mobile_menu_option'>
             
-            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined }  to={'/'} end >
+            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined }  to={'/postProduct'} end >
             <AiFillPlusCircle  size={35} />
                
             </NavLink>
@@ -45,7 +44,7 @@ const MobileMenu = () => {
 
          <div className='mobile_menu_option'>
             
-            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined } to={`/me/${localStorage.getItem('id')}`} end>
+            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined } to={id ? `/me/${localStorage.getItem('id')}` : '/'} end>
             <AiOutlineUser size={25} />
                Perfil
             </NavLink>

@@ -3,7 +3,7 @@ import '../Profile/Profile.css'
 import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
-import { BiArrowBack,BiHome } from 'react-icons/bi'
+import { BiArrowBack, BiHome } from 'react-icons/bi'
 import swal from 'sweetalert'
 import { Navigate, Link, useNavigate } from 'react-router-dom'
 
@@ -13,7 +13,7 @@ const Profile = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const phoneNumber = localStorage.getItem('phoneNumber') || user.phoneNumber;
     const neighborhood = localStorage.getItem('neighborhood') || user.neighborhood;
-    const [loading,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
     const backgroundRef = useRef();
     const formRef = useRef();
@@ -21,8 +21,8 @@ const Profile = () => {
     const [file, setFile] = useState();
     const params = useParams();
     const mercadoPagoAuthLink = `https://auth.mercadopago.com/authorization?client_id=72333279858722&response_type=code&platform_id=mp&state=${params.id}&redirect_uri=https://theshopnet.netlify.app/successfullBinding`
-    
-    
+
+
 
     const succesfullAlert = () => {
         return swal({
@@ -58,24 +58,26 @@ const Profile = () => {
     // envia la imágen al servidor 
     const enviarImagen = () => {
         const form = new FormData();
+
         for (let key in file) {
-            form.append(key, file[key]) 
+            form.append(key, file[key])
         }
 
-        console.log(form)
+ 
         axios.post(`https://shopnet.up.railway.app/api/users/me/${params.id}`, form, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
         })
-            .then(
+            .then(res => {
                 succesfullAlert()
+                localStorage.setItem('newProfilePhoto', res.data.userImage)
+            }
             )
             .catch((e) => {
                 console.log(e)
             })
     }
-
 
 
     const deletingAccessToken = () => {
@@ -84,38 +86,44 @@ const Profile = () => {
         axios.post('https://shopnet.up.railway.app/api/users/deleteAccessToken', {
             id: user._id
         })
-        .then(() => {
-            console.log('borrado')
+            .then(() => {
+                console.log('borrado')
             })
-        .catch((e) => console.log(e))
+            .catch((e) => console.log(e))
     }
 
     // Seteo de token.
 
     useEffect(() => {
-        
-        console.log(user.image)
 
-        if(user.image !== "false") {
-            backgroundRef.current.style.backgroundImage = `url(${user.image})`
+
+
+        if (localStorage.getItem('newProfilePhoto')) {
+            backgroundRef.current.style.backgroundImage = `url(${localStorage.getItem('newProfilePhoto')})`
         }
 
-        if(user.mercadopagoAccessToken !== null) {
+        else if (!localStorage.getItem('newProfilePhoto') && user.image !== "false") {
+            backgroundRef.current.style.backgroundImage = `url(${user.image})`
+            localStorage.setItem('profilePhoto', user.image)
+        }
+
+
+        if (user.mercadopagoAccessToken !== null) {
             setMpStatus(true)
         }
 
-        
-    },[user.mercadopagoAccessToken, user.image,user.neighborhood,user.phoneNumber])
+
+    }, [user.image, user.mercadopagoAccessToken])
 
     return (
         <>
 
-        {!token && <Navigate replace to='/login'/>}
+            {!token && <Navigate replace to='/login' />}
 
             <div className='profile-container'>
                 <div className='back-button' onClick={() => navigate(-1)}>
-                <BiArrowBack className='arrow_icon' size={20}/>
-                <BiHome  size={25} />
+                    <BiArrowBack className='arrow_icon' size={20} />
+                    <BiHome size={25} />
                 </div>
                 <div className='profile_info'>
                     <div ref={backgroundRef} className='image_container'>
@@ -137,15 +145,15 @@ const Profile = () => {
                         <>
                             <button onClick={logout}> Cerrar Sesión </button>
                             <Link to={`/me/${id}/settings`}> <button> Editar Perfil </button> </Link>
-                            
-                         </>
+
+                        </>
                         : null
                 }
 
                 {
                     mpStatus
-                        ? <button onClick={deletingAccessToken}> Desasociar MercadoPago  </button> 
-                        : <button><a href={mercadoPagoAuthLink}> Asociar MercadoPago </a> </button>     
+                        ? <button onClick={deletingAccessToken}> Desasociar MercadoPago  </button>
+                        : <button><a href={mercadoPagoAuthLink}> Asociar MercadoPago </a> </button>
                 }
 
             </div>

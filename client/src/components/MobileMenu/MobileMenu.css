@@ -45,9 +45,15 @@
     .mobile_menu_option a {
         font-size: 1.2em;
     }
+
+    svg {
+        transform: scale(1.3);
+    }
 }
 
-@media all and (min-width: 1024px) {
+
+
+@media all and (min-width: 1200px) {
     .mobile-menu-container {
         display: none;
     }

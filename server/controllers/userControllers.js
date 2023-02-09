@@ -94,6 +94,7 @@ const loginUser = async (req, res) => {
     }
 }
 
+
 // Subir avatar de perfil
 const uploadImage = async (req, res) => {
 

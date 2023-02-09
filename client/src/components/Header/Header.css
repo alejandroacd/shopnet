@@ -67,12 +67,11 @@ a {
 @media (min-width: 992px){
 
 
-    .nav-list-burger {
-        display: none;
-    }
+
     .nav-list li {
         position: relative;
         padding: 1em;
+        font-size: 1.2em
     
     }
     .nav-list li::after{
@@ -94,20 +93,14 @@ a {
 
 }
 
-@media (min-width:1024px){
-    
-    .nav-list {
-        display: flex;
-    
-    }
-    .burger-menu {
-        display:none;
-}
-}
+
 
 @media (min-width:1200px) {
 
 
+    .nav-list {
+        display:flex;
+    }
     .container_header {
         font-size: 1.1em;
     }
@@ -115,6 +108,4 @@ a {
     .header {
         height: 13vh;
     }
-
- 
 }

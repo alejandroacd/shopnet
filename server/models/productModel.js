@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     
     creatorId: {
-      type: "String",
+      type: String,
       required: false
     },
     name:{
-        type: "String",
+        type: String,
         required:true
     },
     description: {
-        type:"String",
+        type:String,
         required: true
     },
     price: {
@@ -22,18 +22,27 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:false
     },
-    imgUrl1: {
-        type: "String",
-        required: true
-    },
-    imgUrl2: {
-        type:"String",
+    image1: {
+        type: String,
         required: false
     },
-    imgUrl3: {
-        type:"String",
+    image2: {
+        type:String,
+        required: false
+    },
+    image2: {
+        type:String,
+        required: false
+    },
+    image4: {
+        type: String,
+        required:false
+    },
+    image5:{
+        type:String,
         required: false
     }
+    
 }, {
     
     timestamps:true

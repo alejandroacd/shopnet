@@ -1,5 +1,6 @@
 const Product = require('../models/productModel')
-
+const uploadUserImage = require('../cloudinary/config')
+const fs = require('fs-extra')
 
 // obtener todos los products
 const getAllProducts = async (req,res) => {
@@ -14,16 +15,20 @@ const postSomeProduct = async (req,res) => {
         throw new Error('Please add the necessary info')
     }
 
-    const post = await Product.create({
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-        imgUrl1: req.body.imgUrl1,
-        imgUrl2: req.body.imgUrl2,
-        imgUrl3: req.body.imgUrl3
-    })
+    try {
+        const result = await uploadUserImage(req.files.image.tempFilePath)
+        await fs.remove(req.files.image.tempFilePath);
+        console.log(result)
+        postToSend = {
+            ...req.body,
+             
+        }
+    }
+    catch(e){
+        res.status(500).json({message:"Server error, cannot post the product for some interal reason."})
+    }
 
-    res.status(200).json(post)
+    console.log(postToSend)
 }
 
 //obtener algún producto por id

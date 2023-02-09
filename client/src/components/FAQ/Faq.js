@@ -4,12 +4,6 @@ import '../FAQ/Faq.css'
 const Faq = () => {
 
 
-
-
-
-
-
-    
     return (
 
         <div className='faq_container'>
@@ -31,37 +25,7 @@ const Faq = () => {
 
             </div>
 
-            <div className='faq_box'>
-                <p className='question'> <span className='blue'>¿</span>
-                      Qué es Shopnet
-                 <span className='blue'>?</span> </p>
-                <p className='answer'> Shopnet es una plataforma de tipo marketplace donde podés postear algún producto que quieras vender, o buscar alguno que quieras</p>
-
-            </div>
-
-            <div className='faq_box'>
-                <p className='question'> <span className='blue'>¿</span>
-                      Qué es Shopnet
-                 <span className='blue'>?</span> </p>
-                <p className='answer'> Shopnet es una plataforma de tipo marketplace donde podés postear algún producto que quieras vender, o buscar alguno que quieras</p>
-
-            </div>
-
-            <div className='faq_box'>
-                <p className='question'> <span className='blue'>¿</span>
-                      Qué es Shopnet
-                 <span className='blue'>?</span> </p>
-                <p className='answer'> Shopnet es una plataforma de tipo marketplace donde podés postear algún producto que quieras vender, o buscar alguno que quieras</p>
-
-            </div>
-
-            <div className='faq_box'>
-                <p className='question'> <span className='blue'>¿</span>
-                      Qué es Shopnet
-                 <span className='blue'>?</span> </p>
-                <p className='answer'> Shopnet es una plataforma de tipo marketplace donde podés postear algún producto que quieras vender, o buscar alguno que quieras</p>
-
-            </div>
+            
         </div>
     )   
 }
