@@ -10,6 +10,10 @@
     
 }
 
+option {
+    font-size:1em;
+}
+
 .settings_div h1 {
     text-align: center;
     margin:1em;
@@ -25,27 +29,29 @@
 }
 .settings_div form label {
     font-weight: bold;
+    font-size:1.2em;
 }
 .settings_div form select {
-    background-color: var(--thirdty);
-    border-radius: 30px;
+    background-color: var(--backgrounds);
     padding:0.5em;
     margin:1em;
+    color: var(--primary);
+    font-size:1em;
 }
 
 .settings_div form input {
-    background-color: var(--thirdty);
+    background-color: var(--backgrounds);
     border:none;
     margin:1em;
     color:var(--primary);
-    border-radius: 30px;
     padding:0.5em;
     color:var(--secondary);
     font-weight: bold;
 }
 
 .settings_div  button {
-    padding:0.8em;
+    padding:1em;
+    font-size:1em;
     background-color: var(--secondary);
     color:var(--primary);
     font-weight: bold;
@@ -58,7 +64,11 @@
     align-items: center;
     position: relative;
     right: 1em;
+    font-weight: bold;
+}
 
+.number-input #phoneNumber {
+    font-size:1em;
 }
 
 .settings_div .error {

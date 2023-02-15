@@ -37,7 +37,7 @@ const Settings = () => {
         }
         else {
             axios.post('https://shopnet.up.railway.app/api/users/updateProfile', {
-                identificador: localStorage.getItem('id'),
+                identificador: localStorage.getItem('id'), 
                 neighborhood: neighborhood.current.value,
                 phoneNumber: phoneNumber.current.value
     
@@ -61,14 +61,16 @@ const Settings = () => {
             {!token && <Navigate replace to='/' />}
 
             <div className='settings_div'>
-                <h1>Edita tu perfil</h1>{
+                <h1>Editá tu perfil</h1>{
                     error ? 
                     <p className='error'>{error}</p> 
                     : null
                 }
-                <form method='POST' action='https://shopnet.up.railway.app/api/users/updateProfile'>
-                    <label htmlFor="neighborhood ">¿En qué barrio te encontrás? </label>
 
+
+                <form method='POST' action='https://shopnet.up.railway.app/api/users/updateProfile'>
+
+                    <label htmlFor="neighborhood ">¿En qué barrio te encontrás? </label>
                     <select ref={neighborhood} name="neighborhood" id="neighborhood">
                         <option value={neighborhoodSaved} selected hidden disabled>{neighborhoodSaved} </option>
                         <option value="Almagro">Almagro</option>

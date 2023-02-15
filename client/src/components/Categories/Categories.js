@@ -4,6 +4,8 @@ import Search from '../Search/Search'
 import { GiClothes, GiHomeGarage, GiWhiteBook, GiGuitar } from 'react-icons/gi'
 import { MdOutlineLaptopWindows } from 'react-icons/md'
 import { FaFutbol }from 'react-icons/fa'
+
+
 const Categories = () => {
 return (
     <>

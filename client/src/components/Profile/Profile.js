@@ -58,12 +58,9 @@ const Profile = () => {
     // envia la imágen al servidor 
     const enviarImagen = () => {
         const form = new FormData();
-
         for (let key in file) {
             form.append(key, file[key])
         }
-
- 
         axios.post(`https://shopnet.up.railway.app/api/users/me/${params.id}`, form, {
             headers: {
                 'Content-Type': 'multipart/form-data'

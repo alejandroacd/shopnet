@@ -26,7 +26,6 @@ const Signup = () => {
         let capitalizedName = name.current.value[0].toUpperCase() + name.current.value.substring(1)
         let capitalizedLastName = lastName.current.value[0].toUpperCase() + lastName.current.value.substring(1)
 
-
         // errors
 
         if(password.current.value !== password2.current.value) {

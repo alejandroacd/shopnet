@@ -124,6 +124,13 @@ textarea:focus {
 }
 
 
+.product_select {
+    width: 50%;
+    background-color: var(--backgrounds);
+    color:var(--primary);
+    font-weight: bold;
+}
+
 @media (min-width:992px) {
     .form_container {
         top: 250px;
@@ -144,6 +151,11 @@ textarea:focus {
 }
 
 @media (min-width:1024px){
+
+    .product_select {
+        width: 15%;
+        padding:0.5em;
+    }
 
 .form_container {
     top:180px;
