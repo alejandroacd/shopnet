@@ -2,7 +2,7 @@ import React, { useRef,useState } from 'react';
 import '../Settings/Settings.css'
 import { Navigate } from 'react-router-dom'
 import axios from 'axios';
-import swal from 'sweetalert'
+import { succesfullAlert } from '../alerts';
 
 
 
@@ -15,16 +15,7 @@ const Settings = () => {
     const neighborhood = useRef()
     const phoneNumber = useRef()
     const phoneRegEx = /^([0-9]){10}$/
-
     const [error,setError] = useState('')
-
-    const succesfullAlert = (message) => {
-        return swal({
-            title: message,
-            icon: 'success',
-            timer: '3000'
-        })
-    }
 
 
     const sendSettings = async (e) => {

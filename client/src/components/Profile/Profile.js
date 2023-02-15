@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
 import { BiArrowBack, BiHome } from 'react-icons/bi'
-import swal from 'sweetalert'
+import {succesfullAlert, deleteMpAlert} from '../alerts'
 import { Navigate, Link, useNavigate } from 'react-router-dom'
 
 const Profile = () => {
@@ -22,23 +22,6 @@ const Profile = () => {
     const params = useParams();
     const mercadoPagoAuthLink = `https://auth.mercadopago.com/authorization?client_id=72333279858722&response_type=code&platform_id=mp&state=${params.id}&redirect_uri=https://theshopnet.netlify.app/successfullBinding`
 
-
-
-    const succesfullAlert = () => {
-        return swal({
-            title: 'Tu foto ha sido actualizada con éxito :)',
-            icon: 'success',
-            timer: '3000'
-        })
-    }
-
-    const deleteMpAlert = () => {
-        return swal({
-            title: 'Desasociaste tu cuenta de Mercado Pago',
-            icon: 'info',
-            timer: '3000'
-        })
-    }
 
     // Eliminar token 
     const logout = () => {
@@ -67,7 +50,7 @@ const Profile = () => {
             },
         })
             .then(res => {
-                succesfullAlert()
+                succesfullAlert('Imágen actualizada con éxito')
                 localStorage.setItem('newProfilePhoto', res.data.userImage)
             }
             )

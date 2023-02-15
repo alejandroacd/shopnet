@@ -6,6 +6,7 @@ import "../PostProduct/slick.css";
 import '../PostProduct/PostProduct.css'
 import { BiAddToQueue } from 'react-icons/bi'
 import { Navigate } from 'react-router-dom'
+import { succesFullAlert } from '../alerts'
 
 const PostProduct = () => {
 
@@ -81,7 +82,7 @@ const PostProduct = () => {
     }
 
     else {
-      console.log(form)
+     
     }
   
 /*   axios.post(`https://shopnet.up.railway.app/api/products/`, formToServer, {
@@ -93,7 +94,6 @@ const PostProduct = () => {
   .catch((err) => console.log(err))
 */
 
-
   }
 
   return (
@@ -102,8 +102,6 @@ const PostProduct = () => {
     
     <div className='form_container'>
       <h2> Vendé <span className='underscore'>_</span></h2>
-
-
 
       <form >
 
