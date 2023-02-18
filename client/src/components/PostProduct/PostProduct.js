@@ -6,7 +6,7 @@ import "../PostProduct/slick.css";
 import '../PostProduct/PostProduct.css'
 import { BiAddToQueue } from 'react-icons/bi'
 import { Navigate } from 'react-router-dom'
-import { succesFullAlert } from '../alerts'
+import { succesfullAlert } from '../alerts'
 
 const PostProduct = () => {
 
@@ -21,6 +21,8 @@ const PostProduct = () => {
   const nameRegEx =  /^([A-Za-z0-9]{5,50})$/
   const [photoError,setPhotoError] = useState('')
   const [nameError, setNameError] = useState('')
+  const [errorPrice, setErrorPrice] = useState('')
+  const[loading, setLoading] = useState(false)
 
   const settings = {
     className: "center",
@@ -34,7 +36,7 @@ const PostProduct = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          infinite: true,
+          infinite: true, 
         }
       }]
   };
@@ -51,6 +53,7 @@ const PostProduct = () => {
 
   const sendNewProduct = (e) => {
     e.preventDefault();
+    setLoading(true)
     const efectivo = document.getElementById('efectivo')
     const mercadopago = document.getElementById('mercadopago')
     const nameIsValid = nameRegEx.test(nameRef.current.value)
@@ -75,32 +78,52 @@ const PostProduct = () => {
     }
 
     if(!nameIsValid){
+      setLoading(false)
       setNameError('Intentá colocando un nombre para el producto que tenga entre 5 y 50 caractéres')
     }
+
+    if(priceRef.current.value == ""){
+      setLoading(false)
+      setErrorPrice('Debes introducir un precio')
+    }
     if(Object.keys(form).length == 8){
+      setLoading(false)
       setPhotoError('Debes agregar al menos una foto')
     }
 
-    else {
-     
+    setTimeout(() => {
+      setLoading(false)
+    }, [3000])
+   {
+      axios.post(`https://shopnet.up.railway.app/api/products/`, formToServer, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then((res) => {
+      succesfullAlert('Producto enviado con éxito')
+      setLoading(false)
+      console.log(form)
+
+    })
+    .catch((err) => {
+      setLoading(false)
+      console.log(err)
+    })
     }
   
-/*   axios.post(`https://shopnet.up.railway.app/api/products/`, formToServer, {
-      headers: {
-          'Content-Type': 'multipart/form-data'
-      }
-  })
-  .then((res) => console.log('todo bene:'))
-  .catch((err) => console.log(err))
-*/
-
   }
 
   return (
     <>
     {!token && <Navigate to="/login"/>}
-    
-    <div className='form_container'>
+
+    {loading ? 
+     <div className='loading-block'><div className="lds-dual-ring"></div> </div>
+     
+     :
+     
+     <div className='form_container'>
       <h2> Vendé <span className='underscore'>_</span></h2>
 
       <form >
@@ -165,6 +188,9 @@ const PostProduct = () => {
         <br/>
 
         <label>Precio:</label>
+        <br />
+        {errorPrice ? <p className='error'> {errorPrice} </p> : null}
+       
         <div className='price_container'>
 
           <label htmlFor='productPrice'> $ </label>
@@ -188,7 +214,7 @@ const PostProduct = () => {
       </form>
 
       
-    </div>
+    </div>}
     </>
 
   )
