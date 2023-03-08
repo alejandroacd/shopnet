@@ -52,7 +52,6 @@ const registerUser = async (req, res) => {
             email: user.email,
             token: generateToken(user._id),
             mercadopagoAccessToken: user.mercadopagoAccessToken,
-            mercadopagoRefreshToken: user.mercad
         })
     }
     else {

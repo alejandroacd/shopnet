@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
 
-    name:{
+    userId: {
+        type: Number,
+        required:false
+    },
+    
+    productName:{
         type: String,
         required:true
     },
@@ -22,6 +27,23 @@ const productSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    mercadoPagoAccessTokenOfUser: {
+        type: String, 
+        required: false
+    },
+    nameOfSeller: {
+        type: String,
+        required: true
+    },
+    acceptMercadopago: {
+        type: String,
+        required: false
+    },
+    acceptCash: {
+        type: String,
+        required: false
+    },
+
     image1: {
         type: String,
         required: false

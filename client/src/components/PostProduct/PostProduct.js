@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Slider from 'react-slick'
 import axios from 'axios'
 import "../PostProduct/slick-theme.css";
@@ -54,12 +54,14 @@ const PostProduct = () => {
   const sendNewProduct = (e) => {
     e.preventDefault();
     setLoading(true)
+    
     const efectivo = document.getElementById('efectivo')
     const mercadopago = document.getElementById('mercadopago')
     const nameIsValid = nameRegEx.test(nameRef.current.value)
     const formToServer = new FormData()
 
     const form = {
+      userId: user._id,
       productName: nameRef.current.value,
       description: descriptionRef.current.value,
       categorie: categorieRef.current.value,
@@ -68,10 +70,10 @@ const PostProduct = () => {
       nameOfSeller: `${user.name} ${user.lastName}`,
       mercadoPagoAccessTokenOfUser: user.mercadopagoAccessToken,
       ...imagesForm,
-      paymentMethods: {
+      paymentMethods: JSON.stringify({
         efectivoIsChecked: efectivo.checked ? true : false,
         mercadoPagoIsChecked: mercadopago.checked ? true : false,
-      }
+      })
     } 
     for(let key in form){
       formToServer.append(key, form[key])
@@ -82,35 +84,34 @@ const PostProduct = () => {
       setNameError('Intentá colocando un nombre para el producto que tenga entre 5 y 50 caractéres')
     }
 
-    if(priceRef.current.value == ""){
+    if(priceRef.current.value === ""){
       setLoading(false)
       setErrorPrice('Debes introducir un precio')
     }
-    if(Object.keys(form).length == 8){
+    if(Object.keys(form).length === 8){
       setLoading(false)
       setPhotoError('Debes agregar al menos una foto')
     }
 
-    setTimeout(() => {
-      setLoading(false)
-    }, [3000])
-   {
-      axios.post(`https://shopnet.up.railway.app/api/products/`, formToServer, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    })
-    .then((res) => {
-      succesfullAlert('Producto enviado con éxito')
-      setLoading(false)
-      console.log(form)
 
-    })
-    .catch((err) => {
-      setLoading(false)
-      console.log(err)
-    })
+    else {
+
+        axios.post(`http://localhost:3001/api/products`, formToServer, {
+          headers: {
+              'Content-Type': 'multipart/form-data'
+          }
+      })
+      .then(() => {
+        setLoading(false)
+        succesfullAlert('Producto enviado con éxito')
+      })
+      .catch((err) => {
+        setLoading(false)
+        console.log(err)
+      })
+      
     }
+
   
   }
 
@@ -126,7 +127,7 @@ const PostProduct = () => {
      <div className='form_container'>
       <h2> Vendé <span className='underscore'>_</span></h2>
 
-      <form >
+      <form method='POST' to="http://localhost:3001/api/products" >
 
         <label htmlFor="productPhotos"> Agregá fotos del producto (mínimo una): </label>
         <br />
