@@ -16,6 +16,10 @@ const postSomeProduct = async (req, res) => {
         res.status(400)
         throw new Error('Please add the necessary info')
     }
+    if(!req.files){
+        res.status(400).json({message: 'Debes introducir al menos una foto'})
+        return;
+    }
 
     const { userId, productName, description, categorie, price, photoOfSeller, nameOfSeller, mercadoPagoAccessTokenOfUser } = req.body
     const paymentMethods = JSON.parse(req.body.paymentMethods)
@@ -45,11 +49,12 @@ const postSomeProduct = async (req, res) => {
         const newProduct = await Product.create(productToDb)
         if (newProduct) {
             res.status(200).json({
-                message: "you're prodcut has been added"
+                message: "Tu producto se ha subido correctamente"
             })
             console.log(newProduct)
         }
         else {
+            res.status(400).json({message:' Error al subir tu producto'})
             console.log('Error creating product')
         }
 
@@ -57,6 +62,7 @@ const postSomeProduct = async (req, res) => {
 
     catch (e) {
         console.log(e)
+        res.status(400).json({message: 'Error al subir tu producto'})
         throw new Error('Error in backend ' +  e)
     }
 

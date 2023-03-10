@@ -17,5 +17,13 @@ export const deleteMpAlert = () => {
     })
 }
 
+export const errorAlert = () => {
+    return swal({
+        title: `Oopss!, algo anduvo mal. Recuerda que debes rellenar todos los campos y subir al menos una foto`,
+        icon: 'error',
+        timer:'3000'
+    })
+}
 
-export default {succesfullAlert, deleteMpAlert}
+
+export default {succesfullAlert, deleteMpAlert, errorAlert}

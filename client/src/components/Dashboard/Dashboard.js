@@ -26,7 +26,7 @@ useEffect(() => {
         <div className='product-container'>
             {datita.map((x,y) => {
                 return (
-            <ProductCard image={x.imgUrl1} price={x.price} productName={x.name} />
+            <ProductCard image={x.image1} price={x.price} productName={x.productName} />
                 )
             })}
       </div>

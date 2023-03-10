@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     border-radius: 7px;
     margin-top:1em;
-    background-color: var(--primary);
+    background-color: var(--backgrounds);
     justify-content: center;
 
 }
@@ -59,8 +59,7 @@
 .description p2 {
     font-size: 1em;
     width: 100%;
-  
-    
+    color:var(--secondary)    
 }
 
 .buttons-description {
@@ -69,6 +68,7 @@
     justify-content: space-evenly;
     margin-top:5%;
     width: 100%;
+
     
 }
 
@@ -81,12 +81,11 @@
     font-weight: bold;
     color: var(--secondary);
     border-radius: 7px;
+    background-color: transparent;
   
 
  
 }
-
-
 
 .product-description {
     width: 100%;
@@ -100,6 +99,7 @@
 
 .price {
     text-align: center;
+    color: var(--primary);
     margin-top:5%;
 }
 

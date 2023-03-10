@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Slider from 'react-slick'
 import axios from 'axios'
 import "../PostProduct/slick-theme.css";
@@ -6,7 +6,7 @@ import "../PostProduct/slick.css";
 import '../PostProduct/PostProduct.css'
 import { BiAddToQueue } from 'react-icons/bi'
 import { Navigate } from 'react-router-dom'
-import { succesfullAlert } from '../alerts'
+import { succesfullAlert, errorAlert } from '../alerts'
 
 const PostProduct = () => {
 
@@ -54,7 +54,7 @@ const PostProduct = () => {
   const sendNewProduct = (e) => {
     e.preventDefault();
     setLoading(true)
-    
+
     const efectivo = document.getElementById('efectivo')
     const mercadopago = document.getElementById('mercadopago')
     const nameIsValid = nameRegEx.test(nameRef.current.value)
@@ -79,41 +79,43 @@ const PostProduct = () => {
       formToServer.append(key, form[key])
     }
 
-    if(!nameIsValid){
+    if(nameIsValid === false){
       setLoading(false)
       setNameError('Intentá colocando un nombre para el producto que tenga entre 5 y 50 caractéres')
+      return;
     }
 
     if(priceRef.current.value === ""){
       setLoading(false)
       setErrorPrice('Debes introducir un precio')
+      return
     }
     if(Object.keys(form).length === 8){
       setLoading(false)
       setPhotoError('Debes agregar al menos una foto')
+      return;
     }
 
 
     else {
 
-        axios.post(`http://localhost:3001/api/products`, formToServer, {
+        axios.post(`https://shopnet.up.railway.app/api/products`, formToServer, {
           headers: {
               'Content-Type': 'multipart/form-data'
           }
       })
-      .then(() => {
+      .then((res) => {
         setLoading(false)
-        succesfullAlert('Producto enviado con éxito')
+        succesfullAlert(res.data.message)
       })
       .catch((err) => {
         setLoading(false)
         console.log(err)
-      })
-      
+        errorAlert(err.message)
+      }) 
     }
-
-  
   }
+
 
   return (
     <>
@@ -127,7 +129,7 @@ const PostProduct = () => {
      <div className='form_container'>
       <h2> Vendé <span className='underscore'>_</span></h2>
 
-      <form method='POST' to="http://localhost:3001/api/products" >
+      <form method='POST' to="https://shopnet.up.railway.app/api/products" >
 
         <label htmlFor="productPhotos"> Agregá fotos del producto (mínimo una): </label>
         <br />
@@ -164,7 +166,7 @@ const PostProduct = () => {
         <br />
         {nameError ? <p className='error'> {nameError} </p> : null}
         <br />
-        <input className='input-texts' ref={nameRef} type="text" name="productName" required />
+        <input className='input-texts' ref={nameRef} type="text" name="productName" id="productName"required />
 
         <label htmlFor='productDescription'> Descripción del producto: </label>
         <br />
