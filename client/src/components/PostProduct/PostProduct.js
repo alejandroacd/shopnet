@@ -79,7 +79,7 @@ const PostProduct = () => {
       formToServer.append(key, form[key])
     }
 
-    if(nameIsValid === false){
+    if(nameIsValid == false){
       setLoading(false)
       setNameError('Intentá colocando un nombre para el producto que tenga entre 5 y 50 caractéres')
       return;
