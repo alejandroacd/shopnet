@@ -7,11 +7,11 @@ const ProductCard = (props) => {
         <div className='product-card'>
         <div className='image-and-author'>
         <img src={props.image} className='product_image'/>
-        <p> post by Ale </p>
+        
         </div>
         <div className='description'>
             <div className='product-description'> 
-            <h1>{props.productName} </h1>                
+            <h1> Hola </h1>                
            </div>
             <h2 className='price'>{props.price} $</h2>
 

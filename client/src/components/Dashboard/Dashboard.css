@@ -14,3 +14,7 @@
 .dashboard-container h1 span {
     color:var(--secondary)
 }
+
+.product-container {
+    padding-bottom: 25%;
+}

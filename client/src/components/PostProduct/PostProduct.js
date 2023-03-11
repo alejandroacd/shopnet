@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Slider from 'react-slick'
 import axios from 'axios'
 import "../PostProduct/slick-theme.css";
@@ -12,9 +12,9 @@ const PostProduct = () => {
 
   const token = localStorage.getItem('token')
   const user = JSON.parse(localStorage.getItem('user'))
-  const nameRef = useRef()
   const descriptionRef = useRef()
   const priceRef = useRef()
+  const nameRef = useRef('')
   const categorieRef = useRef()
   const image1 = useRef()
   const [imagesForm, setForm] = useState({})
@@ -41,6 +41,8 @@ const PostProduct = () => {
       }]
   };
 
+
+
   const pickImage = (selected) => {
     let nameOfAttr = selected.target.id
     setForm({
@@ -52,13 +54,14 @@ const PostProduct = () => {
   }
 
   const sendNewProduct = (e) => {
+
     e.preventDefault();
     setLoading(true)
-
     const efectivo = document.getElementById('efectivo')
     const mercadopago = document.getElementById('mercadopago')
     const nameIsValid = nameRegEx.test(nameRef.current.value)
     const formToServer = new FormData()
+    console.log(nameRef.current.value)
 
     const form = {
       userId: user._id,
@@ -79,13 +82,13 @@ const PostProduct = () => {
       formToServer.append(key, form[key])
     }
 
-    if(nameIsValid == false){
+    if(nameIsValid !== true){
       setLoading(false)
       setNameError('Intentá colocando un nombre para el producto que tenga entre 5 y 50 caractéres')
-      return;
+      return
     }
 
-    if(priceRef.current.value === ""){
+    if(priceRef.current.value === ""){ 
       setLoading(false)
       setErrorPrice('Debes introducir un precio')
       return
@@ -115,6 +118,7 @@ const PostProduct = () => {
       }) 
     }
   }
+
 
 
   return (
