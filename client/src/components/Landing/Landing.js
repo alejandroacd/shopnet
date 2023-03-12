@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../Landing/Landing.css'
 
 const Landing = () => {
@@ -9,8 +10,8 @@ const Landing = () => {
                Comprá y vendé lo que quieras. Al precio que quieras!
              </p>
              <div className='buttons'>
-                 <button className='landing_button'> Últimos posts</button>
-                 <button className='landing_button'> Buscar por categoría </button>
+                 <Link to="dashboard" className='landing_button'>Últimos post</Link> 
+                 <Link to="search" className='landing_button'> Buscar por categoría</Link>
              </div>
              
         </div>

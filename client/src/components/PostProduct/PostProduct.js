@@ -14,11 +14,11 @@ const PostProduct = () => {
   const user = JSON.parse(localStorage.getItem('user'))
   const descriptionRef = useRef()
   const priceRef = useRef()
-  const nameRef = useRef('')
+  const nameRef = useRef()
   const categorieRef = useRef()
   const image1 = useRef()
   const [imagesForm, setForm] = useState({})
-  const nameRegEx =  /^([A-Za-z0-9]{5,50})$/
+  const nameRegEx =  /^([A-Za-z0-9\s]{5,50})+$/
   const [photoError,setPhotoError] = useState('')
   const [nameError, setNameError] = useState('')
   const [errorPrice, setErrorPrice] = useState('')
@@ -81,6 +81,7 @@ const PostProduct = () => {
     for(let key in form){
       formToServer.append(key, form[key])
     }
+    console.log(form)
 
     if(nameIsValid !== true){
       setLoading(false)
@@ -210,7 +211,7 @@ const PostProduct = () => {
         <div className='checkmark_container'>
         
         <input className="input-checkmark"  type="checkbox" id="efectivo" value="Efectivo" />
-        <label htmlFor='Efectivo'> Efectivo </label><br/>
+        <label htmlFor='Efectivo'> Efectivo en la entrega</label><br/>
         <input className="input-checkmark"  id="mercadopago" type="checkbox" value="MercadoPago" />
         <label htmlFor='Mercadopago'> Mercadopago </label>
 

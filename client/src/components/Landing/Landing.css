@@ -19,10 +19,15 @@
     bottom:0;
     left: 0;
     right: 0;
-    background-color: black;
-    opacity: 0.4;
+    background-color: var(--backgrounds);
+    opacity: 0.9;
     z-index: 3;
 }
+
+
+
+
+
 
 .landing_title {
     width:60%;
@@ -38,21 +43,37 @@
     -webkit-text-fill-color: transparent;
 }
 
-img {
-    opacity: 0.8;
-}
 
 .buttons {
-    padding-top:2em;
+    position: relative;
+    top:50px;
     display: flex;
-    width: 90%;
+    width: 100%;
+    margin:0 auto;
     justify-content: space-evenly;
+    padding:1em;
     z-index:3;
+   
+}
+
+.buttons a {
+
+    border-radius: 5px;
+    padding:0.5em;
+    width: 40%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary);
+    letter-spacing: 1px;
+    font-weight: bold;
+
 }
 
 .buttons button {
     padding:0.5em;
-    font-size:1em;
+    font-size:1.3em;
     border-radius: 20px;
     border-color: transparent;
     background-color: var(--secondary);
