@@ -9,8 +9,6 @@ const getAllProducts = async (req, res) => {
 }
 
 
-
-
 const postSomeProduct = async (req, res) => {
     if (!req.body) {
         res.status(400)

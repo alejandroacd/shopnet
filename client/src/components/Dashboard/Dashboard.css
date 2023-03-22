@@ -18,3 +18,21 @@
 .product-container {
     padding-bottom: 25%;
 }
+
+@media (min-width:920px) {
+    .product-container {
+        display: flex;
+        width: 95%;
+        justify-content: space-around;
+        margin:0 auto;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+    }
+}
+
+@media (min-width: 1024px){
+    .product-container {
+        width: 85%;
+    }
+}

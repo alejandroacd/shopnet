@@ -12,6 +12,7 @@ import SuccessfullBinding from './components/mpSuccesfullBinding/successfullBind
 import Faq from './components/FAQ/Faq'
 import PostProduct from './components/PostProduct/PostProduct';
 import Categories from './components/Categories/Categories'
+import SellBox from './components/SellBox/SellBox'
 import { MpProvider } from './contexts/mpContext'
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
               <Route exact path='/search' element={<Categories />} />
               <Route exact path='/faq' element={<Faq />} />
               <Route exact path="/postProduct" element={<PostProduct />} />
+              <Route exact path="/product/" element={<SellBox />} />
               
             </Routes>
 
