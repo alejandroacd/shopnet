@@ -37,6 +37,7 @@ const postSomeProduct = async (req, res) => {
         price,
         photoOfSeller,
         nameOfSeller,
+        neighborhoodOfSeller,
         mercadoPagoAccessTokenOfUser,
         acceptMercadopago: paymentMethods.mercadoPagoIsChecked,
         acceptCash: paymentMethods.efectivoIsChecked,

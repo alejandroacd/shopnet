@@ -71,6 +71,7 @@ const PostProduct = () => {
       price: priceRef.current.value,
       photoOfSeller: user.image,
       nameOfSeller: `${user.name} ${user.lastName}`,
+      neighborhoodOfSeller: user.neighborhood,
       mercadoPagoAccessTokenOfUser: user.mercadopagoAccessToken,
       ...imagesForm,
       paymentMethods: JSON.stringify({

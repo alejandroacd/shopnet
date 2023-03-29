@@ -27,6 +27,10 @@ const productSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    neighborhoodOfSeller: {
+        type:String,
+        required:false
+    },
     mercadoPagoAccessTokenOfUser: {
         type: String, 
         required: false

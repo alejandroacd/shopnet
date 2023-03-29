@@ -101,7 +101,7 @@ const Profile = () => {
             {!token && <Navigate replace to='/login' />}
 
             <div className='profile-container'>
-                <div className='back-button' onClick={() => navigate(-1)}>
+                <div className='back-button' onClick={() => navigate('/')}>
                     <BiArrowBack className='arrow_icon' size={20} />
                     <BiHome size={25} />
                 </div>

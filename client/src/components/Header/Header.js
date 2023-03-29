@@ -32,7 +32,7 @@ const Header = () => {
                 <Link to={isLoggedIn ? `/me/${identifier}` : "login"}> <li> {isLoggedIn ? 'Mi perfil' : "Iniciar Sesión"} </li> </Link>
                 <Link to={isLoggedIn ? '/postProduct' : '/login'}> <li> Vender </li> </Link>
                 <Link to="/search"> <li> Ver categorías </li> </Link>
-                <Link to="faq"> <li> FAQ </li> </Link>
+                <Link to="faq">  </Link>
             </ul>
         </header>
 
