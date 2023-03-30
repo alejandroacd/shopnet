@@ -104,7 +104,7 @@ const Profile = () => {
                 <div className='back-button' onClick={() => navigate('/')}>
                     <BiArrowBack className='arrow_icon' size={20} />
                     <BiHome size={25} />
-                </div>
+             </div>
                 <div className='profile_info'>
                     <div ref={backgroundRef} className='image_container'>
                         <form ref={formRef} method='POST' action="https://shopnet.up.railway.app/api/users/me/:id">

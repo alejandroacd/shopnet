@@ -87,11 +87,12 @@
     border:1px solid var(--secondary);
     width:100%;
     min-height: 90%;
-    padding:0.1em;
+    padding:0.5em;
     margin:0.2em;
     font-weight: bold;
     color: var(--secondary);
     border-radius: 7px;
+    font-size:1.1em;
     background-color: transparent;
 }
 

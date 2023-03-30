@@ -4,11 +4,14 @@ import axios from 'axios';
 import './Slider.js'
 import { AiOutlineWhatsApp } from 'react-icons/ai'
 import { BsFillSuitHeartFill } from 'react-icons/bs'
+import { BiArrowBack, BiHome } from 'react-icons/bi'
+import {useNavigate} from 'react-router-dom'
 import Slider from './Slider.js';
 
 
 const SellBox = () => {
 
+    const navigate = useNavigate()
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
     const queryString = window.location.search
@@ -48,16 +51,17 @@ const SellBox = () => {
 
         <>
 
-{loading && <div className='loading-block'><div className="lds-dual-ring"></div> </div>}
-
-
-        <h1 className='product-title'> {product.productName} <span>_</span>  </h1>
-
-        
+            {loading && <div className='loading-block'><div className="lds-dual-ring"></div> </div>}
+            <div className='go_back_button' onClick={() => navigate(-1)}>
+                    <BiArrowBack className='arrow_icon' size={25} />
+                    Ir atrás
+             </div>
+            <h1 className='product-title'> {product.productName} <span>_</span>  </h1> 
             <div className='sellbox_div'>
+           
                 <Slider slides={images} />
                 <div className='product-info'>
-                <h1> Descripción: </h1>
+                    <h1> Descripción: </h1>
                     <p> {product.description} </p>
                     <h1> Precio: </h1>
                     <p> {product.price} <span>$</span> </p>
@@ -71,13 +75,13 @@ const SellBox = () => {
                         <p> {product.nameOfSeller} </p>
                     </div>
                     <div className='product-buttons'>
-                    <button> Enviar un mensaje al vendedor <AiOutlineWhatsApp /> </button>
-                    <button> Agregar a Favoritos  <BsFillSuitHeartFill /> </button>
+                        <button> Enviar un mensaje al vendedor <AiOutlineWhatsApp /> </button>
+                        <button> Agregar a Favoritos  <BsFillSuitHeartFill /> </button>
                     </div>
-                    
+
                 </div>
             </div>
-    
+
         </>
     )
 }
