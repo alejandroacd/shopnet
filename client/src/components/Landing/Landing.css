@@ -7,9 +7,10 @@
     justify-content: center;
     z-index:0;
     position: relative;
-    background: url("./shoplanding.jpg") no-repeat 60%;
+    background:  url("./shoplanding.jpg") no-repeat 60%;
     background-size: cover;
     color:var(--primary);
+    
 }
 
 .landing::before {

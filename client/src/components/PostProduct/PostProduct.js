@@ -69,10 +69,10 @@ const PostProduct = () => {
       description: descriptionRef.current.value,
       categorie: categorieRef.current.value,
       price: priceRef.current.value,
-      photoOfSeller: user.image,
+      photoOfSeller: user.image || localStorage.getItem('newProfilePhoto') || null,
       nameOfSeller: `${user.name} ${user.lastName}`,
-      neighborhoodOfSeller: user.neighborhood,
-      mercadoPagoAccessTokenOfUser: user.mercadopagoAccessToken,
+      neighborhoodOfSeller: user.neighborhood || localStorage.getItem('neighborhood') || null,
+      mercadoPagoAccessTokenOfUser: user.mercadopagoAccessToken || null,
       ...imagesForm,
       paymentMethods: JSON.stringify({
         efectivoIsChecked: efectivo.checked ? true : false,
