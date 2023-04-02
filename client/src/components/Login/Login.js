@@ -38,6 +38,7 @@ const Login = () => {
                         localStorage.setItem('token', token)
                         localStorage.setItem('id', _id)
                         localStorage.setItem('user', JSON.stringify(res.data))
+                        localStorage.setItem('favorites', JSON.stringify(res.data.favorites) )
                     }
                 })
                 .catch(err => {
@@ -69,7 +70,7 @@ const Login = () => {
                         <form method="POST" action="https://shopnet.up.railway.app/api/users/login">
                             <label htmlFor="email"> Correo electrónico </label>
                             <div className='input-container'>
-                                <input name="email" ref={emailRef} placeholder="Escribe tu e-mail..." type="email" autofocus="autofocus" />
+                                <input name="email" ref={emailRef} placeholder="Escribe tu e-mail..." type="email" autoFocus />
                             </div>
                             <label htmlFor="password"> Contraseña </label>
                             <div className='input-container'>

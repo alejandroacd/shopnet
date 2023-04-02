@@ -13,12 +13,14 @@ import Faq from './components/FAQ/Faq'
 import PostProduct from './components/PostProduct/PostProduct';
 import Categories from './components/Categories/Categories'
 import SellBox from './components/SellBox/SellBox'
+import Favorites from './components/Favorites/Favorites'
 import { MpProvider } from './contexts/mpContext'
+import { CartProvider } from './contexts/CartContext'
 
 function App() {
   return (
     <>
-
+    <CartProvider>
       <MpProvider >
         <BrowserRouter>
           <div className="main">
@@ -34,6 +36,7 @@ function App() {
               <Route exact path='/faq' element={<Faq />} />
               <Route exact path="/postProduct" element={<PostProduct />} />
               <Route exact path="/product/" element={<SellBox />} />
+              <Route exact path='/me/:id/favorites' element={<Favorites />} /> 
               
             </Routes>
 
@@ -42,6 +45,7 @@ function App() {
           </div>
         </BrowserRouter>
       </MpProvider>
+      </CartProvider>
     </>
   );
 }

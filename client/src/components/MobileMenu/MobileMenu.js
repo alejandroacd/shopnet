@@ -44,9 +44,9 @@ const MobileMenu = () => {
 
          <div className='mobile_menu_option'>
             
-            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined } to={id ? `/me/${localStorage.getItem('id')}` : '/'} end>
+            <NavLink className={({isActive}) => isActive ? 'styleNavLink' : undefined } to={id ? `/me/${localStorage.getItem('id')}` : '/login'} end>
             <AiOutlineUser size={25} />
-               Perfil
+               {id ? 'Perfil' : 'Iniciar sesión'}
             </NavLink>
          </div>
 

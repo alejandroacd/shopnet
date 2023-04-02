@@ -96,6 +96,11 @@
     background-color: transparent;
 }
 
+.buttons-description .button_description:hover {
+    content: 'hola';
+    background-color: var(--secondary);
+    color:var(--primary)
+}
 .product-description {
     width: 100%;
     display: -webkit-box;

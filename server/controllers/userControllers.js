@@ -41,7 +41,8 @@ const registerUser = async (req, res) => {
         phoneNumber: '',
         neighborhood: '',
         mercadopagoAccessToken: null,
-        mercadopagoRefreshToken: null
+        mercadopagoRefreshToken: null,
+        favorites: []
     })
 
     if (user) {
@@ -52,6 +53,7 @@ const registerUser = async (req, res) => {
             email: user.email,
             token: generateToken(user._id),
             mercadopagoAccessToken: user.mercadopagoAccessToken,
+            favorites: user.favorites
         })
     }
     else {
@@ -81,7 +83,8 @@ const loginUser = async (req, res) => {
             isLoggedIn: true,
             image: user.userImage,
             mercadopagoAccessToken: user.mercadopagoAccessToken,
-            mercadopagoRefreshToken: user.mercadopagoRefreshToken
+            mercadopagoRefreshToken: user.mercadopagoRefreshToken,
+            favorites: user.favorites
 
         })
     } else {
@@ -92,7 +95,6 @@ const loginUser = async (req, res) => {
 
     }
 }
-
 
 // Subir avatar de perfil
 const uploadImage = async (req, res) => {
@@ -186,6 +188,33 @@ const generateToken = (id) => {
     })
 }
 
+const addProductToFavorites = async (req,res) => {
+
+     const { id, productName, image, price, nameOfSeller, url} = req.body;
+     const object = {
+        productName,
+        image,
+        price,
+        nameOfSeller,
+        url
+     }
+     
+    try {
+     const updated = await User.findByIdAndUpdate(id,
+        {$addToSet:{favorites: {...object}}}, 
+        {$strict: false})
+      console.log(  `Producto añadido al carrito correctamente: ${updated}` )
+     res.json({
+        updated
+     })
+    }
+   catch(e){
+    res.status(400).json({message: e})
+    throw new Error('Error in server')
+   }
+    
+}
+
 module.exports = {
     registerUser,
     loginUser,
@@ -194,5 +223,6 @@ module.exports = {
     updateTokens,
     updateProfile,
     deleteAccessToken,
-    generateToken
+    generateToken,
+    addProductToFavorites
 } 

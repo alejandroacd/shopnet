@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { registerUser, loginUser, getMyUser, uploadImage, updateTokens, updateProfile, deleteAccessToken} = require('../controllers/userControllers')
+const { registerUser, loginUser, getMyUser, uploadImage, updateTokens, updateProfile, deleteAccessToken, addProductToFavorites } = require('../controllers/userControllers')
 const protect = require('../middlewares/authMiddleware')
 
 router.post('/', registerUser)
@@ -17,6 +17,7 @@ router.post('/deleteAccessToken', deleteAccessToken)
 
 router.post('/updateProfile', updateProfile)
 
+router.post('/addToFavorites', addProductToFavorites)
 
 
 

@@ -37,6 +37,10 @@ const userSchema = mongoose.Schema({
     mercadopagoRefreshToken: {
         type: String,
         required:false
+    },
+    favorites: {
+        type: Array,
+        required:false
     }
 },  
 {

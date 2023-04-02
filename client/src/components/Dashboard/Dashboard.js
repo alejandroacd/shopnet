@@ -8,6 +8,11 @@ import axios from 'axios'
 const Dashboard = () => {
     const [datita, setData] = useState([])
     const [loading,setLoading] = useState(true)
+
+
+    const consolearEsto = () => {
+        console.log(this)
+    }
         useEffect(() => {
             axios.get('https://shopnet.up.railway.app/api/products')
                 .then(res => {
@@ -16,6 +21,8 @@ const Dashboard = () => {
                     setData(res.data)
                 })
         }, [])
+
+
 
     useEffect(() => {
         console.log(datita)
@@ -34,7 +41,7 @@ const Dashboard = () => {
                   <div className='product-container'>
                   {datita.map((x, y) => {
                       return (
-                          <ProductCard url={x._id} image={x.image1} price={x.price} productName={x.productName} key={x._id} photoOfSeller={x.photoOfSeller} />
+                          <ProductCard  url={x._id} image={x.image1} price={x.price} productName={x.productName} key={x._id} photoOfSeller={x.photoOfSeller} />
                       )
                   })}
               

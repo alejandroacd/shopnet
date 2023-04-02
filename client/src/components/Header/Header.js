@@ -1,12 +1,11 @@
 import React,{useEffect, useState} from 'react'
 import "../Header/Header.css"
-
 import { Link } from 'react-router-dom';
-
-
-
+import { MdFavoriteBorder } from 'react-icons/md'
+import { useCart } from '../../contexts/CartContext'
 const Header = () => {
 
+    const {favorites} = useCart()
     const token = localStorage.getItem('token')
     const [isLoggedIn,setLoggedIn] = useState(false);
     const identifier = localStorage.getItem('id') || null;
@@ -28,12 +27,17 @@ const Header = () => {
             <div className="logo" onClick={redirection}>
                 <h1>SHOPNET<span className='underscore'>_</span></h1>
             </div>
+
+            <div className='browse_options'>
             <ul className='nav-list'>
-                <Link to={isLoggedIn ? `/me/${identifier}` : "login"}> <li> {isLoggedIn ? 'Mi perfil' : "Iniciar Sesión"} </li> </Link>
-                <Link to={isLoggedIn ? '/postProduct' : '/login'}> <li> Vender </li> </Link>
-                <Link to="/search"> <li> Ver categorías </li> </Link>
-                <Link to="faq">  </Link>
+                <Link to={isLoggedIn ? `/me/${identifier}` : "login"}> <li> {isLoggedIn ? 'mi perfil' : "iniciar sesión"} </li> </Link>
+                <Link to={isLoggedIn ? '/postProduct' : '/login'}> <li> vender </li> </Link>
+                <Link to="/search"> <li>  categorías </li> </Link>
             </ul>
+            <Link to={`me/${localStorage.getItem('id')}/favorites`}> <li> <MdFavoriteBorder size={25} /> {favorites ? favorites.length : null} </li> </Link>
+
+            </div>
+    
         </header>
 
         

@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Slider.js'
 import { AiOutlineWhatsApp } from 'react-icons/ai'
 import { BsFillSuitHeartFill } from 'react-icons/bs'
-import { BiArrowBack, BiHome } from 'react-icons/bi'
+import { BiArrowBack } from 'react-icons/bi'
 import {useNavigate} from 'react-router-dom'
 import Slider from './Slider.js';
 
@@ -26,6 +26,9 @@ const SellBox = () => {
         image6: product.image6
     })
 
+    const addToFavs = () => {
+        
+    }
     useEffect(() => {
         axios.get(`https://shopnet.up.railway.app/api/products/${value}`)
             .then(res => {
@@ -51,7 +54,8 @@ const SellBox = () => {
 
         <>
 
-            {loading && <div className='loading-block'><div className="lds-dual-ring"></div> </div>}
+            {loading ? <div className='loading-block'> <div className="lds-dual-ring"></div> </div> :
+             <>
             <div className='go_back_button' onClick={() => navigate(-1)}>
                     <BiArrowBack className='arrow_icon' size={25} />
                     Ir atrás
@@ -81,8 +85,11 @@ const SellBox = () => {
 
                 </div>
             </div>
-
-        </>
+            </>
+}
+</>
+            
+       
     )
 }
 

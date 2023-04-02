@@ -76,8 +76,6 @@ const Profile = () => {
 
     useEffect(() => {
 
-
-
         if (localStorage.getItem('newProfilePhoto')) {
             backgroundRef.current.style.backgroundImage = `url(${localStorage.getItem('newProfilePhoto')})`
         }
