@@ -10,6 +10,8 @@ const getAllProducts = async (req, res) => {
 
 
 const postSomeProduct = async (req, res) => {
+
+    console.log(req.body)
     if (!req.body) {
         res.status(400)
         throw new Error('Please add the necessary info')
@@ -19,7 +21,7 @@ const postSomeProduct = async (req, res) => {
         return;
     }
 
-    const { userId, productName, description, categorie, price, photoOfSeller, nameOfSeller, mercadoPagoAccessTokenOfUser } = req.body
+    const { userId, productName, description, categorie, price, photoOfSeller, nameOfSeller, neighborhoodOfSeller, mercadoPagoAccessTokenOfUser } = req.body
     const paymentMethods = JSON.parse(req.body.paymentMethods)
     const files = req.files;
     let images = {}

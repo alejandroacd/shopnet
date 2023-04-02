@@ -9,7 +9,7 @@ export const useCart = () => {
 
 export const CartProvider = ({children}) => {
 
-    const [favorites,setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
+    const [favorites,setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || [])
 
 
 

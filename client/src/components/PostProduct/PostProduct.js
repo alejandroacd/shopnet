@@ -69,7 +69,7 @@ const PostProduct = () => {
       description: descriptionRef.current.value,
       categorie: categorieRef.current.value,
       price: priceRef.current.value,
-      photoOfSeller: user.image || localStorage.getItem('newProfilePhoto') || null,
+      photoOfSeller: user.image || localStorage.getItem('profilePhoto') || null,
       nameOfSeller: `${user.name} ${user.lastName}`,
       neighborhoodOfSeller: user.neighborhood || localStorage.getItem('neighborhood') || null,
       mercadoPagoAccessTokenOfUser: user.mercadopagoAccessToken || null,
@@ -82,7 +82,7 @@ const PostProduct = () => {
     for(let key in form){
       formToServer.append(key, form[key])
     }
-    console.log(form)
+    console.log(formToServer)
 
     if(nameIsValid !== true){
       setLoading(false)
@@ -104,7 +104,7 @@ const PostProduct = () => {
 
     else {
 
-        axios.post(`https://shopnet.up.railway.app/api/products`, formToServer, {
+        axios.post(`https://shopnet.up.netlify.app/api/products`, formToServer, {
           headers: {
               'Content-Type': 'multipart/form-data'
           }
@@ -135,7 +135,7 @@ const PostProduct = () => {
      <div className='form_container'>
       <h2> Vendé <span className='underscore'>_</span></h2>
 
-      <form method='POST' to="https://shopnet.up.railway.app/api/products" >
+      <form method='POST' to="https://shopnet.up.netlify.app/api/products" >
 
         <label htmlFor="productPhotos"> Agregá fotos del producto (mínimo una): </label>
         <br />
