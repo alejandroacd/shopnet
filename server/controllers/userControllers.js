@@ -221,9 +221,7 @@ const removeProductFromFavorites = async (req,res) => {
 
     try {
         const updated = await User.findByIdAndUpdate(id,
-           {$pull: {favorites: {url: url} }},
-           false,
-           true )
+           {$pull: {favorites: {url: url} }})
            console.log('producto eliminado correctamente: ' + updated)
            res.json({
             updated
