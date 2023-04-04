@@ -5,9 +5,9 @@ import "../PostProduct/slick-theme.css";
 import "../PostProduct/slick.css";
 import '../PostProduct/PostProduct.css'
 import { BiAddToQueue } from 'react-icons/bi'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { succesfullAlert, errorAlert } from '../alerts'
-
+import { BiArrowBack } from 'react-icons/bi';
 const PostProduct = () => {
 
   const token = localStorage.getItem('token')
@@ -23,6 +23,8 @@ const PostProduct = () => {
   const [nameError, setNameError] = useState('')
   const [errorPrice, setErrorPrice] = useState('')
   const[loading, setLoading] = useState(false)
+  
+  const navigate = useNavigate()
 
   const settings = {
     className: "center",
@@ -131,8 +133,15 @@ const PostProduct = () => {
      <div className='loading-block'><div className="lds-dual-ring"></div> </div>
      
      :
-     
+
+     <>
+     <div className='go_back_button' onClick={() => navigate(-1)}>
+                    <BiArrowBack className='arrow_icon' size={25} />
+                    Ir atrás
+             </div>
+   
      <div className='form_container'>
+      
       <h2> Vendé <span className='underscore'>_</span></h2>
 
       <form method='POST' to="https://shopnet.up.netlify.app/api/products" >
@@ -223,7 +232,9 @@ const PostProduct = () => {
       </form>
 
       
-    </div>}
+    </div>
+    </>
+     }
     </>
 
   )

@@ -7,7 +7,7 @@ import { useCart } from './../../contexts/CartContext'
 
 const ProductCard = (props) => {
 
-    const { addToFavorites } = useCart()
+    const { addToFavorites, removeFromFavorites } = useCart()
 
     return (
         <div className='product-card'>

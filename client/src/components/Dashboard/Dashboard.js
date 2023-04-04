@@ -9,10 +9,6 @@ const Dashboard = () => {
     const [datita, setData] = useState([])
     const [loading,setLoading] = useState(true)
 
-
-    const consolearEsto = () => {
-        console.log(this)
-    }
         useEffect(() => {
             axios.get('https://shopnet.up.railway.app/api/products')
                 .then(res => {

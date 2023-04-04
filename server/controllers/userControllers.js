@@ -215,6 +215,26 @@ const addProductToFavorites = async (req,res) => {
     
 }
 
+const removeProductFromFavorites = async (req,res) => {
+    console.log(req.body)
+    const { id, url } = req.body;
+
+    try {
+        const updated = await User.findByIdAndUpdate(id,
+           {$pull: {favorites: {url: url} }},
+           false,
+           true )
+           console.log('producto eliminado correctamente: ' + updated)
+           res.json({
+            updated
+           })
+    }
+    catch(e){
+        res.status(400).json({message: e})
+        throw new Error('Error in server: ' + e)
+    }
+}
+
 module.exports = {
     registerUser,
     loginUser,
@@ -224,5 +244,6 @@ module.exports = {
     updateProfile,
     deleteAccessToken,
     generateToken,
-    addProductToFavorites
+    addProductToFavorites,
+    removeProductFromFavorites
 } 
