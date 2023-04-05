@@ -26,10 +26,9 @@ const SellBox = () => {
         image6: product.image6
     })
 
-    const addToFavs = () => {
-        
-    }
+
     useEffect(() => {
+
         axios.get(`https://shopnet.up.railway.app/api/products/${value}`)
             .then(res => {
                 setLoading(false)
@@ -67,6 +66,8 @@ const SellBox = () => {
                 <div className='product-info'>
                     <h1> Descripción: </h1>
                     <p> {product.description} </p>
+                    <h1> Categoría: </h1>
+                    <p> {product.categorie} </p>
                     <h1> Precio: </h1>
                     <p> {product.price} <span>$</span> </p>
 

@@ -1,0 +1,35 @@
+.favorites_box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 15em;
+    position: relative;
+    top:15vh;
+}
+
+
+.favorites_box h1 {
+    text-align: center;
+    color: var(--primary);
+    margin:1em
+}
+
+@media (min-width:1024px) {
+    .favorites_box {
+        width: 85%;
+        margin:0 auto;
+
+    }
+
+    .favorites_box > .product-card {
+        width: 45%;
+        margin:1em auto;
+        
+    }
+
+    .favorites_box > .product-card > .description {
+        height: auto;
+    }
+
+}

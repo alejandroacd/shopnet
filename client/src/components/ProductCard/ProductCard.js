@@ -26,7 +26,7 @@ const ProductCard = (props) => {
             <div className='buttons-description'>
                 <button className='button_description' style={exist ? {backgroundColor:'var(--secondary)'} : {}} onClick={() => addToFavorites(props)}> <MdFavoriteBorder style={exist ? {fill: 'var(--primary)'} : {}}/></button>
 
-                <Link to={`product/?id=${props.url}`} > <button className='button_description'>  Ver más...</button></Link>
+                <Link to={`/product/?id=${props.url}`} > <button className='button_description'>  Ver más...</button></Link>
 
             </div>
         </div>

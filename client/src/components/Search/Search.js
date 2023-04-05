@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../Search/Search.css'
-import { BiSearchAlt2 } from 'react-icons/bi'
+import { BiArrowBack, BiSearchAlt2 } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
+
 
 const Search = () => {
-    return (
+    const [search,setSearch] = useState('')
+    const inputRef = useRef('')
+    const navigate = useNavigate()
 
-        <div className='search_container'>
-            <input className='search-global' type='text' placeholder='Buscá lo que quieras...' />
-            <BiSearchAlt2 size={35} />
-        </div>
+    const handleChange = () => {
+        setSearch(inputRef.current.value)
+    }
+    useEffect(() => {
+        console.log(search)
+    }, [search])
+
+    return (
+        <>            
+        <BiArrowBack style={{color:'white'}} onClick={() => navigate(-1)} />
+            <div className='search_container'>
+                <input ref={inputRef} onChange={() => handleChange()} className='search-global' type='text' placeholder='Buscá lo que quieras...' />
+                <BiSearchAlt2 size={35} />
+            </div>
+        </>
 
     )
 }

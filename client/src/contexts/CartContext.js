@@ -17,7 +17,6 @@ export const CartProvider = ({ children }) => {
         console.log(favorites)
     }, [])
 
-
     const addToFavorites = (product) => {
 
         const { productName, photoOfSeller, price, url, image } = product

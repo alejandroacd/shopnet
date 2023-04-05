@@ -16,6 +16,7 @@ import SellBox from './components/SellBox/SellBox'
 import Favorites from './components/Favorites/Favorites'
 import { MpProvider } from './contexts/mpContext'
 import { CartProvider } from './contexts/CartContext'
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <BrowserRouter>
           <div className="main">
             <Header />
+            
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/signup" element={<Signup />} />
@@ -36,7 +38,8 @@ function App() {
               <Route exact path='/faq' element={<Faq />} />
               <Route exact path="/postProduct" element={<PostProduct />} />
               <Route exact path="/product/" element={<SellBox />} />
-              <Route exact path='/me/:id/favorites' element={<Favorites />} /> 
+              <Route exact path='/me/:id/favorites' element={<Favorites />} />
+              <Route exact path='/categorias/' element={<Dashboard />} />
               
             </Routes>
 

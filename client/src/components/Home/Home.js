@@ -7,7 +7,7 @@ const Home = () => {
         <>
         <Header />
         <Landing />
-        <Dashboard />
+        <Dashboard filter={"All"}/>
         </>
     )
 }

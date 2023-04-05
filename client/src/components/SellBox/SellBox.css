@@ -50,6 +50,7 @@
     transition: 1s;
     animation-name: animate;
     animation-duration: 1s;
+
 }
 
 
@@ -234,7 +235,7 @@ span {
         width: 85%;
         opacity: 0.9;
         height: 65vh;
-        padding: 2em;
+        padding: 3em;
         margin-bottom: 0;
         border-radius: 30px;
         background-color: #1C1C1C
