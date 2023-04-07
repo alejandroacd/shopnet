@@ -18,7 +18,6 @@ const Search = () => {
 
     return (
         <>            
-        <BiArrowBack style={{color:'white'}} onClick={() => navigate(-1)} />
             <div className='search_container'>
                 <input ref={inputRef} onChange={() => handleChange()} className='search-global' type='text' placeholder='Buscá lo que quieras...' />
                 <BiSearchAlt2 size={35} />

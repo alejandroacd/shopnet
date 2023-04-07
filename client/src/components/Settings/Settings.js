@@ -1,8 +1,10 @@
 import React, { useRef,useState } from 'react';
 import '../Settings/Settings.css'
 import { Navigate } from 'react-router-dom'
+import { BiArrowBack} from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { succesfullAlert } from '../alerts';
+import { succesfullAlert} from '../alerts';
 
 
 
@@ -12,7 +14,8 @@ const Settings = () => {
     let token = localStorage.getItem('token')
     let phoneNumberSaved = localStorage.getItem('phoneNumber')
     let neighborhoodSaved = localStorage.getItem('neighborhood')
-    const neighborhood = useRef()
+    const neighborhood = useRef();
+    const navigate = useNavigate()
     const phoneNumber = useRef()
     const phoneRegEx = /^([0-9]){10}$/
     const [error,setError] = useState('')
@@ -50,8 +53,11 @@ const Settings = () => {
     return (
         <>
             {!token && <Navigate replace to='/' />}
+            
+            <BiArrowBack className='arrow_icon' style={{position:'relative',top: '15vh',margin:'1em'}} onClick={() => {navigate(-1)}} size={35}/>
 
             <div className='settings_div'>
+
                 <h1>Editá tu perfil</h1>{
                     error ? 
                     <p className='error'>{error}</p> 

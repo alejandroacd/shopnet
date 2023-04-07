@@ -3,6 +3,8 @@ import "../Header/Header.css"
 import { Link } from 'react-router-dom';
 import { MdFavoriteBorder } from 'react-icons/md'
 import { useCart } from '../../contexts/CartContext'
+import Search from '../../components/Search/Search'
+
 const Header = () => {
 
     const {favorites} = useCart()
@@ -27,6 +29,7 @@ const Header = () => {
             <div className="logo" onClick={redirection}>
                 <h1>SHOPNET<span className='underscore'>_</span></h1>
             </div>
+   
 
             <div className='browse_options'>
             <ul className='nav-list'>
@@ -34,7 +37,7 @@ const Header = () => {
                 <Link to={isLoggedIn ? '/postProduct' : '/login'}> <li> vender </li> </Link>
                 <Link to="/search"> <li>  categorías </li> </Link>
             </ul>
-            <Link to={`me/${localStorage.getItem('id')}/favorites`}> <li> <MdFavoriteBorder size={25} /> {favorites ? favorites.length : null} </li> </Link>
+            <Link to={`me/${localStorage.getItem('id')}/favorites`}> <li>  {favorites ? favorites.length : null} <MdFavoriteBorder size={25} /></li> </Link>
 
             </div>
     

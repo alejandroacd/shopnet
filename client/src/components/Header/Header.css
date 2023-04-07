@@ -21,6 +21,9 @@ a {
     
 }
 
+.search_header {
+    background-color: var(--backgrounds);
+}
 .container_header {
     z-index:1000;
    position:fixed;
@@ -33,7 +36,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
     height: 12vh;
     color:var(--primary);
@@ -68,6 +71,12 @@ a {
 
 .header li {
     list-style: none;
+    display: flex;
+    align-items: center;
+    font-size:1.2em
+}
+.header li svg {
+    margin:0.5em
 }
 
 .nav-list li {
@@ -104,6 +113,10 @@ a {
           width: 100%;
       }
 
+      .header {
+        width: 75%;
+      }
+
 }
 
 
@@ -120,5 +133,6 @@ a {
 
     .header {
         height: 13vh;
+        width: 85%;
     }
 }
