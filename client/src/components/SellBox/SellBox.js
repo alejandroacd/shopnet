@@ -69,7 +69,7 @@ const SellBox = () => {
                     <h1> Categoría: </h1>
                     <p> {product.categorie} </p>
                     <h1> Precio: </h1>
-                    <p> {product.price} <span>$</span> </p>
+                    <p className='product_price'> <b>{product.price}</b>  <span>$</span> </p>
 
                     <h1 className='paymentMethods'>Métodos de pago <span> __ </span>: </h1>
                     <p> <b>Efectivo en la entrega: </b> {product.acceptCash ? 'Sí' : 'No'}</p>
