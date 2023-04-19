@@ -190,10 +190,11 @@ const generateToken = (id) => {
 
 const addProductToFavorites = async (req,res) => {
 
-     const { id, productName, image, price, nameOfSeller, url} = req.body;
+     const { id, productName, image1, price, nameOfSeller, url} = req.body;
+     
      const object = {
         productName,
-        image,
+        image1,
         price,
         nameOfSeller,
         url

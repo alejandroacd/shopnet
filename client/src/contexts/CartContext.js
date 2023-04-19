@@ -19,13 +19,13 @@ export const CartProvider = ({ children }) => {
 
     const addToFavorites = (product) => {
 
-        const { productName, photoOfSeller, price, url, image } = product
+        const { productName, photoOfSeller, price, url, image1 } = product
         const id = localStorage.getItem('id')
         let exist = favorites.find(x => x.url === product.url);
 
 
         if (!exist) {
-            setFavorites([...favorites, { photoOfSeller, productName, price, url, image }])
+            setFavorites([...favorites, { photoOfSeller, productName, price, url, image1 }])
             
             axios.post('https://shopnet.up.railway.app/api/users/addToFavorites', {
                 id,
@@ -33,7 +33,7 @@ export const CartProvider = ({ children }) => {
                 photoOfSeller,
                 price,
                 url,
-                image,
+                image1,
                 pinned:true
             })
                 .then(res => {

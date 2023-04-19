@@ -7,6 +7,7 @@ import { BsFillSuitHeartFill } from 'react-icons/bs'
 import { BiArrowBack } from 'react-icons/bi'
 import {useNavigate} from 'react-router-dom'
 import Slider from './Slider.js';
+import { useCart } from '../../contexts/CartContext'
 
 
 const SellBox = () => {
@@ -17,6 +18,7 @@ const SellBox = () => {
     const queryString = window.location.search
     const decoded = new URLSearchParams(queryString)
     const value = decoded.get('id')
+    const { addToFavorites } = useCart()
     const [images, setImages] = useState({
         image1: product.image1,
         image2: product.image2,
@@ -29,8 +31,11 @@ const SellBox = () => {
 
     useEffect(() => {
 
+
+        console.log(product)
         axios.get(`https://shopnet.up.railway.app/api/products/${value}`)
             .then(res => {
+                console.log(res.data)
                 setLoading(false)
                 setProduct(res.data)
                 setImages({
@@ -81,7 +86,7 @@ const SellBox = () => {
                     </div>
                     <div className='product-buttons'>
                         <button> Enviar un mensaje al vendedor <AiOutlineWhatsApp /> </button>
-                        <button> Agregar a Favoritos  <BsFillSuitHeartFill /> </button>
+                        <button onClick={() => addToFavorites(product)}> Agregar a Favoritos  <BsFillSuitHeartFill /> </button>
                     </div>
 
                 </div>

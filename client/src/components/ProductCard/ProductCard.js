@@ -14,7 +14,7 @@ const ProductCard = (props) => {
     return (
         <div className='product-card'>
         <div className='image-and-author'>
-        <img src={props.image} className='product_image'/>
+        <img src={props.image1} className='product_image'/>
         
         </div>
         <div className='description'>

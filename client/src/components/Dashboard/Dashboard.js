@@ -42,7 +42,7 @@ const Dashboard = (props) => {
             {finalValue.length > 0 && <div className='product-container'>
                   {finalValue.map((x, y) => {
                       return (
-                          <ProductCard url={x._id} image={x.image1} price={x.price} productName={x.productName} key={x._id} photoOfSeller={x.photoOfSeller} />
+                          <ProductCard url={x._id} image1={x.image1} price={x.price} productName={x.productName} key={x._id} photoOfSeller={x.photoOfSeller} />
                       )
                   })}
               
@@ -52,7 +52,7 @@ const Dashboard = (props) => {
           <div className='product-container'>
           {datita.map((x, y) => {
               return (
-                  <ProductCard url={x._id} image={x.image1} price={x.price} productName={x.productName} key={x._id} photoOfSeller={x.photoOfSeller} />
+                  <ProductCard url={x._id} image1={x.image1} price={x.price} productName={x.productName} key={x._id} photoOfSeller={x.photoOfSeller} />
               )
           })}
       
