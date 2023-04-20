@@ -14,8 +14,9 @@ export const CartProvider = ({ children }) => {
 
 
     useEffect(() => {
-        console.log(favorites)
+        
     }, [])
+    
 
     const addToFavorites = (product) => {
 

@@ -17,7 +17,7 @@ const Favorites = () => {
 
         <div className='favorites_box'>
             <BiArrowBack style={{color: 'var(--primary)', margin: '1em'}} onClick={() => navigate(-1)} />
-            <h1> {favorites.length > 0 ? "Favoritos"  : 'No tiene favoritos :('} </h1>
+            <h1> {favorites.length > 0 ? "Favoritos"  : 'No tienes favoritos :('} </h1>
         {favorites.map(x => {
             return (
                 <ProductCard key={x.url} productName={x.productName} price={x.price} image1={x.image1} url={x.url} />
