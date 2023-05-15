@@ -41,6 +41,10 @@ const userSchema = mongoose.Schema({
     favorites: {
         type: Array,
         required:false
+    },
+    verified: {
+        type: Boolean,
+        required: false
     }
 },  
 {

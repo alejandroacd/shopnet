@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const User = require('../models/userModel')
+const User = require('../models/userModel');
 const fs = require('fs-extra')
 const uploadUserImage = require('../cloudinary/config')
-
+const transporter = require('../utils/sendEmailConfirmation')
 
 // register 
 const registerUser = async (req, res) => {
@@ -28,7 +28,7 @@ const registerUser = async (req, res) => {
 
     //Hash the password
     const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(password, salt)
+    const hashedPassword = await bcrypt.hash(password, salt)  
 
     //Create user
 
@@ -42,10 +42,12 @@ const registerUser = async (req, res) => {
         neighborhood: '',
         mercadopagoAccessToken: null,
         mercadopagoRefreshToken: null,
-        favorites: []
+        favorites: [],
+        verified: false
     })
 
     if (user) {
+
         res.status(201).json({
             _id: user.id,
             name: user.name,
@@ -53,14 +55,21 @@ const registerUser = async (req, res) => {
             email: user.email,
             token: generateToken(user._id),
             mercadopagoAccessToken: user.mercadopagoAccessToken,
-            favorites: user.favorites
+            favorites: user.favorites,
+            verified: user.verified
         })
+        transporter(email, 'Por favor, confirma tu email :)', `https://theshopnet.netlify.app/verify/${user._id}`)
+
     }
     else {
         res.status(400)
         throw new Error('invalid user data')
     }
 }
+
+
+// email verification 
+
 
 
 // login 
@@ -84,7 +93,8 @@ const loginUser = async (req, res) => {
             image: user.userImage,
             mercadopagoAccessToken: user.mercadopagoAccessToken,
             mercadopagoRefreshToken: user.mercadopagoRefreshToken,
-            favorites: user.favorites
+            favorites: user.favorites,
+            verified: user.verified
 
         })
     } else {
