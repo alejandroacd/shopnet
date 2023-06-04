@@ -64,7 +64,7 @@ const SellBox = () => {
                     <BiArrowBack className='arrow_icon' size={25} />
                     Ir atrás
              </div>
-            <h1 className='product-title'> {product.productName} <span>_</span>  </h1> 
+            <h1 className='product-title'> {product.productName}</h1> 
             <div className='sellbox_div'>
            
                 <Slider slides={images} />

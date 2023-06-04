@@ -11,12 +11,10 @@ export const CartProvider = ({ children }) => {
 
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || [])
 
-
-
     useEffect(() => {
-        
-    }, [])
-    
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+    },[favorites])
+
 
     const addToFavorites = (product) => {
 
@@ -27,7 +25,7 @@ export const CartProvider = ({ children }) => {
 
         if (!exist) {
             setFavorites([...favorites, { photoOfSeller, productName, price, url, image1 }])
-            
+            console.log(favorites)
             axios.post('https://shopnet.up.railway.app/api/users/addToFavorites', {
                 id,
                 productName,
@@ -38,7 +36,7 @@ export const CartProvider = ({ children }) => {
                 pinned:true
             })
                 .then(res => {
-                    localStorage.setItem('favorites', JSON.stringify(res.data.updated.favorites))
+                    console.log(res.data)
                 }
                 )
                 .catch(e => console.log(e))
@@ -46,14 +44,14 @@ export const CartProvider = ({ children }) => {
 
         if (exist) {
             const newFavorites = favorites.filter(x => x.url !== url)
-            console.log(newFavorites)
+
             setFavorites(newFavorites)
             axios.post('https://shopnet.up.railway.app/api/users/removeFromFavorites', {
                 id,
                 url
             })
                 .then((res) => {
-                    localStorage.setItem('favorites', JSON.stringify(res.data.updated.favorites))
+                   console.log(res.data)
                 })
                 .catch(e => console.log(e))
         }

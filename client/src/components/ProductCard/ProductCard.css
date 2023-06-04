@@ -16,8 +16,7 @@
 
 .product-card:hover {
     background-color: transparent;
-    padding:0.4em
-
+    transform:scale(1.1)
 }
 
 .product_image {
@@ -65,7 +64,7 @@
     color:white
 }
 .description h2 {
-    font-size: 1em;
+    font-size: 1.2em;
     width: 100%;
     color:var(--secondary) 
 }
@@ -79,7 +78,7 @@
 
 }
 
- .buttons-description  a {
+ .buttons-description a {
     width: 100%
 }
 
